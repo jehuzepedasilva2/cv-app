@@ -1,77 +1,14 @@
+* {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
 :root {
-  --page-text-clr: black;
-  --accent-clr: lightgray;
+  --text-clr: black;
+  --editable-clr: lightgray;
+  --button-clr: lightgray;
 }
 
-body {
-  position: relative;
-}
-
-.edit {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  appearance: none;
-  background-color: var(--accent-clr);
-  border: none;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: large;
-  transition: transform 0.3s ease-in-out;
-}
-
-.edit:hover {
-  transform: scale(1.1);
-}
-
-.edit:active {
-  opacity: 0.1;
-}
-
-.box.active {
-  background-color: var(--accent-clr);
-  border-radius: 0.3rem;
-  animation: wiggle 1s linear infinite;
-}
-
-.del {
-  box-sizing: border-box;
-  border: 1px solid white;
-  appearance: none;
-  background-color: var(--accent-clr);
-  border-radius: 50%; /* Ensure the button stays circular */
-  font-size: xx-small; /* Control the size of the '-' */
-  color: white;
-  padding: 0; /* Remove any extra padding */
-  width: 1rem; /* Set explicit width */
-  height: 1rem; /* Set explicit height */
-  display: flex; /* Center the content */
-  align-items: center;
-  justify-content: center;
-  visibility: hidden;
-  position: absolute;
-  top: -0.5rem;
-  right: -0.3rem;
-  z-index: 1;
-  transition: transform 0.3s ease-in-out;
-}
-
-.del.vis-a {
-  visibility: visible;
-}
-
-.del:hover {
-  transform: scale(1.1);
-}
-
-#divider {
-  width: 100%;
-  height: 0.08rem;
-  background-color: var(--page-text-clr);
-}
-
+/* the outer page */
 .page {
   display: flex;
   flex-direction: column;
@@ -83,84 +20,82 @@ body {
   gap: 1.3rem;
 }
 
-.top {
+/* rules for all input boxes */
+input {
+  color: var(--text-clr);
+}
+
+/* the container containing the editable components */
+.outer {
+  /* border: 1px solid red; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editable {
+  display: flex;
+  align-items: center;
+}
+
+/* the editable component (input) visual when its off */
+.editable input.off {
+  background-color: transparent;
+}
+
+.editable input.off:focus {
+  outline: none;
+  border: none;
+}
+
+/* the editable component (input) visual when its on (edit was clicked) */
+.editable input {
+  appearance: none;
+  border: none;
+  background-color: var(--editable-clr);
+  border-radius: 1rem;
+  padding: 0;
+  padding-left: 0.3rem;
+  transition: width 0.2s ease;
+}
+
+.section {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+#first-last {
+  font-weight: bold;
+}
+
+.contact-info-links {
+  display: flex;
   justify-content: center;
   gap: 0.5rem;
 }
 
-.name {
-  align-self: center;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
+.divider, .section-header {
+  width: 100%;
 }
 
-.page svg {
+.section-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  border: 1px solid black
+}
+
+svg {
   width: 16px;
   height: 16px;
 }
 
-.contact-info {
-  display: flex;
-  justify-content: center;
-  gap: 0.3rem;
-}
-
-.phone-num, 
-.email,
-.linked-in, 
-.github {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-right: 0.5rem;
-}
-
-.phone-num > a {
-  text-decoration: none;
-}
-
-a {
-  color: var(--page-text-clr);
-  cursor: pointer;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
-}
-
-.section-title {
-  font-weight: lighter;
-}
-
-.universities {
-  padding-left: 0.6rem;
-  padding-right: 0.6rem;
-}
-
-.uni-meta {
-  display: flex;
-  justify-content: space-between;
-}
-
-.uni-name-date p:first-child {
-  font-weight: bold;
-}
-
-.uni-degree-location {
-  font-size: smaller;
-  font-style: italic;
-}
-
-.universities ul {
-  padding-left: 1rem;
-  font-size: smaller;
-}
-
-.universities li::before {
-  content: "Relevant Coursework:";
-  font-weight: bold;
-}
-
+/* wiggle animation for when edit is clicked on an editable */
 @keyframes wiggle {
   0% {
     transform: rotate(0deg);

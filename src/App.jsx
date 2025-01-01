@@ -1,5 +1,4 @@
 import './App.css';
-import EditButton from './EditButton';
 import Page from './Page';
 
 // Application should include...
@@ -14,7 +13,6 @@ import Page from './Page';
 function App() {
   return (
     <>
-      <EditButton />
       <Page />
     </>
   )
