@@ -4,96 +4,66 @@
 
 :root {
   --text-clr: black;
-  --editable-clr: lightgray;
   --button-clr: lightgray;
 }
 
-/* the outer page */
 .page {
   display: flex;
   flex-direction: column;
   width: 60%;
   height: 100%;
+  overflow-y: scroll;
   border-radius: 0.5rem;
   box-shadow: 5px 2px 15px 3px gray;
   padding: 3rem;
   gap: 1.3rem;
-}
-
-/* rules for all input boxes */
-input {
-  color: var(--text-clr);
-}
-
-/* the container containing the editable components */
-.outer {
-  /* border: 1px solid red; */
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.editable {
-  display: flex;
-  align-items: center;
-}
-
-/* the editable component (input) visual when its off */
-.editable input.off {
-  background-color: transparent;
-}
-
-.editable input.off:focus {
-  outline: none;
-  border: none;
-}
-
-/* the editable component (input) visual when its on (edit was clicked) */
-.editable input {
-  appearance: none;
-  border: none;
-  background-color: var(--editable-clr);
-  border-radius: 1rem;
-  padding: 0;
-  padding-left: 0.3rem;
-  transition: width 0.2s ease;
+  min-width: 500px;
 }
 
 .section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.4rem;
 }
 
-#first-last {
-  font-weight: bold;
-}
-
-.contact-info-links {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.divider, .section-header {
+.divider, 
+.section-header {
   width: 100%;
 }
 
 .section-header {
   display: flex;
   flex-direction: column;
+  margin-bottom: -1rem;
+}
+
+.section-header h3 {
+  font-weight: 520;
 }
 
 .divider {
-  border: 1px solid black
+  border: 0.06rem solid black
 }
 
 svg {
   width: 16px;
   height: 16px;
 }
+
+.sub {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub:has(li) {
+  flex-direction: column;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* wiggle animation for when edit is clicked on an editable */
 @keyframes wiggle {
