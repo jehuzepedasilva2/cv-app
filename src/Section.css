@@ -84,6 +84,6 @@ ul {
 }
 
 .section-info.skills {
-  gap: 0;
+  gap: 0.2rem;
   font-size: 0.9rem;
 }

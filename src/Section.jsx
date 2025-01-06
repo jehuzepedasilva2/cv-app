@@ -25,6 +25,11 @@ SectionList.propTypes = {
   isEducation: PropTypes.bool,
 }
 
+SectionSkills.propTypes = {
+  information: PropTypes.array
+}
+
+
 function Divider() {
   return <div className='divider'></div>
 }
@@ -56,20 +61,24 @@ function SectionList({ list, isEducation }) {
 
 }
 
+function SectionSkills({ information }) {
+  return (
+    <div className='section-info skills'>
+      <div className='languages'>
+        <strong>Languages: </strong>
+        {information[0].languages}
+      </div>
+      <div className='techs'>
+        <strong>Technologies: </strong>
+        {information[0].technologies}
+      </div>
+    </div>
+  );
+}
+
 function SectionInfo({ information, isEducation, isProjects, isSkills }) {
   if (isSkills) {
-    return (
-      <div className='section-info skills'>
-        <div className='languages'>
-          <strong>Languages: </strong>
-          {information[0].languages}
-        </div>
-        <div className='techs'>
-          <strong>Technologies: </strong>
-          {information[0].technologies}
-        </div>
-      </div>
-    );
+    return <SectionSkills information={information} />;
   }
 
   return (
