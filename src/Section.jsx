@@ -6,7 +6,7 @@ import { useEditable } from './handleEditable';
 
 Section.propTypes = {
   sectionTitle: PropTypes.string,
-  information: PropTypes.array,
+  information: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   isEducation: PropTypes.bool, 
   isProjects: PropTypes.bool,
   isSkills: PropTypes.bool, 
@@ -17,7 +17,7 @@ SectionHeader.propTypes = {
 }
 
 SectionInfo.propTypes = {
-  information: PropTypes.array,
+  information: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   setInfo: PropTypes.func,
   isEducation: PropTypes.bool,
   isProjects: PropTypes.bool,
@@ -33,7 +33,8 @@ SectionList.propTypes = {
 }
 
 SectionSkills.propTypes = {
-  information: PropTypes.array,
+  information: PropTypes.object,
+  setInfo: PropTypes.func,
 }
 
 ListItem.propTypes = {
@@ -44,8 +45,13 @@ ListItem.propTypes = {
   id: PropTypes.string,
 }
 
-// useEditable takes in a onBlurCallback and returns isClicked, divRef, handleBlur, handleClick,
+ListItem2.propTypes = {
+  information: PropTypes.object, 
+  infoKey: PropTypes.string, 
+  setInfo: PropTypes.func,  
+}
 
+// useEditable takes in a onBlurCallback and returns isClicked, divRef, handleBlur, handleClick,
 function Divider() {
   return <div className='divider'></div>
 }
@@ -118,16 +124,41 @@ function SectionList({ list, information, setInfo, id, isEducation }) {
   );
 }
 
-function SectionSkills({ information }) {
+function ListItem2({ information, infoKey, setInfo }) {
+  const handleBlurCallback = (e) => {
+    const k = e.target.classList[1];
+    setInfo({...information, [k]: e.target.innerHTML});
+  }
+
+  const {
+    isClicked, 
+    divRef, 
+    handleBlur, 
+    handleClick,
+  } = useEditable(handleBlurCallback);
+
   return (
-    <div className='section-info skills'>
-      <div className='languages'>
-        <strong>Languages: </strong>
-        {information[0].languages}
-      </div>
-      <div className='techs'>
-        <strong>Technologies: </strong>
-        {information[0].technologies}
+    <li
+      className={`editable ${infoKey} ${isClicked ? 'clicked' : ''}`}
+      ref={divRef}
+      suppressContentEditableWarning
+      contentEditable
+      onBlur={(e) => handleBlur(e)}
+      onFocus={handleClick}
+      onClick={handleClick}
+    >
+      {information[infoKey]}
+    </li>
+  );
+
+}
+
+function SectionSkills({ information, setInfo }) {
+  return (
+    <div className='parent section-info skills'>
+      <div>
+        <ListItem2 information={information} infoKey="languages" setInfo={setInfo} />
+        <ListItem2 information={information} infoKey='technologies' setInfo={setInfo} />
       </div>
     </div>
   );
@@ -135,7 +166,7 @@ function SectionSkills({ information }) {
 
 function SectionInfo({ information, setInfo, isEducation, isProjects, isSkills }) {
   if (isSkills) {
-    return <SectionSkills information={information} />;
+    return <SectionSkills information={information} setInfo={setInfo} />;
   }
 
   return (

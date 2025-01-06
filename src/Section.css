@@ -68,6 +68,11 @@ ul {
   font-size: 0.9rem;
 }
 
+.outer {
+  width: max-content;
+  max-width: fit-content;
+}
+
 .sub-title, 
 .sub-city-and-state {
   font-size: 0.9rem;
@@ -85,5 +90,22 @@ ul {
 
 .section-info.skills {
   gap: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.languages, 
+.technologies{
+  list-style: none;
+}
+
+.languages::before {
+  content: "Languages: ";
+  font-weight: bold;
+  font-size: 0.9rem;
+} 
+
+.technologies::before {
+  content: "Technologies: ";
+  font-weight: bold;
   font-size: 0.9rem;
 }
