@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './Section.css';
+import './editables.css';
 
 Section.propTypes = {
   sectionTitle: PropTypes.string,
@@ -51,6 +52,7 @@ function SectionList({ list, isEducation }) {
           <div key={l.id} id={`outer-${l.id}`} className={`outer ${isEducation ? 'ed' : ''}`}> {/* remember that key goes on the parent */}
             <li
               id={`li-${l.id}`}
+              className='editable list-item'
             >
               {l.point}
             </li>

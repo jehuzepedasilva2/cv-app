@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './TopPage.css';
+import { useEditable } from './handleEditable.jsx';
 import './editables.css'
 import { 
   PhoneIcon, 
@@ -7,7 +8,7 @@ import {
   LinkedInIcon, 
   GitHubIcon 
 } from './icons.jsx';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 Link.propTypes = {
   className: PropTypes.string,
@@ -24,52 +25,6 @@ TopPage.propTypes = {
 Name.propTypes = {
   info: PropTypes.object,
   setInfo: PropTypes.func,
-}
-
-function useEditable(onBlurCallback=() => {}) {
-  const [isClicked, setIsClicked] = useState(false);
-  const divRef = useRef();
-
-  const handleBlur = (e) => {
-    onBlurCallback(e);
-  };
-
-  const handleClick = () => {
-    setIsClicked(true);
-  };
-
-  const handleOutsideClick = (e) => {
-    if (divRef.current && !divRef.current.contains(e.target)) {
-      setIsClicked(false);
-    }
-  };
-
-  const handleKey = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-    }
-    if (e.key === 'Tab') {
-      setIsClicked(false);
-    }
-  };
-
-  useEffect(() => {
-    if (isClicked) {
-      document.addEventListener('click', handleOutsideClick);
-      document.addEventListener('keydown', handleKey);
-    }
-    return () => {
-      document.removeEventListener('click', handleOutsideClick);
-      document.removeEventListener('keydown', handleKey);
-    };
-  }, [isClicked]);
-
-  return {
-    isClicked,
-    divRef,
-    handleBlur,
-    handleClick,
-  };
 }
 
 function Link({ className, info, setInfo, infoKey, svg }) {
