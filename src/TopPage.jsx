@@ -12,11 +12,25 @@ TopPage.propTypes = {
   contactInfo: PropTypes.object,
 }
 
+Name.propTypes = {
+  information: PropTypes.object
+}
+
 function Link({className, information, svg}) {
   return (
     <div className={`link ${className}`}>
       {svg}
-      {information}
+      <div className='editable'>
+        {information}
+      </div>
+    </div>
+  );
+}
+
+function Name({ information }) {
+  return (
+    <div className="name editable">
+      <h1>{information.name}</h1>
     </div>
   );
 }
@@ -24,9 +38,7 @@ function Link({className, information, svg}) {
 function TopPage({ contactInfo }) {
   return (
     <div className="top-page">
-      <div className="name">
-        <h1>{contactInfo.name}</h1>
-      </div>
+      <Name information={contactInfo} />
       <div className="media-links">
         <Link className='phone' information={contactInfo.phone} svg={PhoneIcon} />
         <Link className="email" information={contactInfo.email} svg={EmailIcon} />
