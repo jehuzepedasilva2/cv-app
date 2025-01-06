@@ -1,0 +1,29 @@
+.name > h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.top-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+svg {
+  height: 16px;
+  width: 16px;
+}

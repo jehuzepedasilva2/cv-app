@@ -60,19 +60,19 @@ function SectionInfo({ information, isEducation, isProjects }) {
       {information.map(item => {
         return (
           <div key={item.id} className='sub-section'>
-            <div className='top'>
-              <p className='name'>
+            <div className='sub-top'>
+              <p className='sub-name'>
               {item.name}
               {isProjects && <span className='proj-line'> | </span>}
               {isProjects && <span className='proj'>{item.languages}</span>}
               </p>
               {!isProjects && <p className='date'>{item.date}</p>}
             </div>
-            <div className='mid'>
-              <p className='title'>{item.title}</p>
-              <p className='city-and-state'>{item.cityAndState}</p>
+            <div className='sub-mid'>
+              <p className='sub-title'>{item.title}</p>
+              <p className='sub-city-and-state'>{item.cityAndState}</p>
             </div>
-            <div className='bottom list'>
+            <div className='sub-bottom list'>
               <SectionList list={item.highlights} isEducation={isEducation} />
             </div>
           </div>
