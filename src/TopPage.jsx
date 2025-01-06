@@ -26,17 +26,17 @@ Name.propTypes = {
   setInfo: PropTypes.func,
 }
 
-function Link({className, info, setInfo, infoKey, svg}) {
+function useEditable(onBlurCallback=() => {}) {
   const [isClicked, setIsClicked] = useState(false);
   const divRef = useRef();
 
   const handleBlur = (e) => {
-    setInfo({...info, [infoKey]: e.target.innerHTML});
-  }
+    onBlurCallback(e);
+  };
 
   const handleClick = () => {
     setIsClicked(true);
-  }
+  };
 
   const handleOutsideClick = (e) => {
     if (divRef.current && !divRef.current.contains(e.target)) {
@@ -58,11 +58,31 @@ function Link({className, info, setInfo, infoKey, svg}) {
       document.addEventListener('click', handleOutsideClick);
       document.addEventListener('keydown', handleKey);
     }
-    return() => {
+    return () => {
       document.removeEventListener('click', handleOutsideClick);
       document.removeEventListener('keydown', handleKey);
-    }
+    };
   }, [isClicked]);
+
+  return {
+    isClicked,
+    divRef,
+    handleBlur,
+    handleClick,
+  };
+}
+
+function Link({ className, info, setInfo, infoKey, svg }) {
+  const handleBlurCallback = (e) => {
+    setInfo({ ...info, [infoKey]: e.target.innerHTML });
+  };
+
+  const { 
+    isClicked, 
+    divRef, 
+    handleBlur, 
+    handleClick } = useEditable(handleBlurCallback);
+
 
   return (
     <div className={`parent link ${className}`}>
@@ -84,42 +104,11 @@ function Link({className, info, setInfo, infoKey, svg}) {
 
 // info is an object
 function Name({ info, setInfo }) {
-  const [isClicked, setIsClicked] = useState(false)
-  const divRef = useRef();
-
-  const handleBlur = (e) => {
-    setInfo({...info, name: e.target.innerHTML})
+  const handleBlurCallback = (e) => {
+    setInfo({ ...info, name: e.target.innerHTML });
   };
 
-  const handleClick = () => {
-    setIsClicked(true);
-  };
-
-  const handleOutsideClick = (e) => {
-    if (divRef.current && !divRef.current.contains(e.target)) {
-      setIsClicked(false);
-    }
-  };
-
-  const handleEnterKey = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-    } 
-    if (e.key === 'Tab') {
-      setIsClicked(false);
-    }
-  };
-
-  useEffect(() => {
-    if (isClicked) {
-      document.addEventListener('click', handleOutsideClick);
-      document.addEventListener('keydown', handleEnterKey);
-    }
-    return() => {
-      document.removeEventListener('click', handleOutsideClick);
-      document.removeEventListener('keydown', handleEnterKey);
-    }
-  }, [isClicked]);
+  const { isClicked, divRef, handleBlur, handleClick } = useEditable(handleBlurCallback);
 
   return (
       <div 
