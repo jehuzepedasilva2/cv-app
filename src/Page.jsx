@@ -5,7 +5,8 @@ import {
   contactInfo,
   educationInfo, 
   experienceInfo, 
-  projectsInfo 
+  projectsInfo, 
+  technicalSkillsInfo
 } from './data.js';
 
 function Page() {
@@ -15,6 +16,7 @@ function Page() {
       <Section sectionTitle='Education' information={educationInfo} isEducation={true} />
       <Section sectionTitle='Experience' information={experienceInfo} />
       <Section sectionTitle='Projects' information={projectsInfo} isProjects={true} />
+      <Section sectionTitle='Technical Skills' information={technicalSkillsInfo} isSkills={true} />
     </div>
   );
 }

@@ -65,6 +65,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  font-size: 0.9rem;
 }
 
 .sub-title, 
@@ -76,4 +77,13 @@ ul {
 .outer.ed > li::before {
   content: 'Relevant Coursework: ';
   font-weight: bold;
+}
+
+.section-info.skills strong {
+  font-size: 1rem;
+}
+
+.section-info.skills {
+  gap: 0;
+  font-size: 0.9rem;
 }

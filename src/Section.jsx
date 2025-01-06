@@ -6,6 +6,7 @@ Section.propTypes = {
   information: PropTypes.array,
   isEducation: PropTypes.bool, 
   isProjects: PropTypes.bool,
+  isSkills: PropTypes.bool, 
 }
 
 SectionHeader.propTypes = {
@@ -16,6 +17,7 @@ SectionInfo.propTypes = {
   information: PropTypes.array,
   isEducation: PropTypes.bool,
   isProjects: PropTypes.bool,
+  isSkills: PropTypes.bool,
 }
 
 SectionList.propTypes = {
@@ -54,7 +56,22 @@ function SectionList({ list, isEducation }) {
 
 }
 
-function SectionInfo({ information, isEducation, isProjects }) {
+function SectionInfo({ information, isEducation, isProjects, isSkills }) {
+  if (isSkills) {
+    return (
+      <div className='section-info skills'>
+        <div className='languages'>
+          <strong>Languages: </strong>
+          {information[0].languages}
+        </div>
+        <div className='techs'>
+          <strong>Technologies: </strong>
+          {information[0].technologies}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className='section-info'>
       {information.map(item => {
@@ -83,11 +100,11 @@ function SectionInfo({ information, isEducation, isProjects }) {
 }
 
 
-function Section({ sectionTitle, information, isEducation=false, isProjects=false }) {
+function Section({ sectionTitle, information, isEducation=false, isProjects=false, isSkills=false }) {
   return (
     <div className='section'>
       <SectionHeader title={sectionTitle}/>
-      <SectionInfo information={information} isEducation={isEducation} isProjects={isProjects} />
+      <SectionInfo information={information} isEducation={isEducation} isProjects={isProjects} isSkills={isSkills} />
     </div>
   );
 }
