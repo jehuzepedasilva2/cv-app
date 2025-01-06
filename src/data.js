@@ -16,7 +16,7 @@ const educationInfo = [
     highlights: [
       {
         id: 'uni-0-hi-0',
-        point: 'Data Structures and Algorithms (C++), Prob & Stat in CS (Python), Intro to CS II (C++), Linear Algebra w/Computational Applications (Python)'
+        point: 'Data Structures and Algorithms (C++), Prob and Stat in CS (Python), Intro to CS II (C++), Linear Algebra w/Computational Applications (Python)'
       }
     ]
   },

@@ -1,15 +1,19 @@
 import {
   useState, 
   useEffect, 
-  useRef
+  useRef, 
 } from 'react';
 
 export function useEditable(onBlurCallback=() => {}) {
   const [isClicked, setIsClicked] = useState(false);
   const divRef = useRef();
 
-  const handleBlur = (e) => {
-    onBlurCallback(e);
+  const handleBlur = (e, lId=null) => {
+    if (lId) {
+      onBlurCallback(e, lId);
+    } else {
+      onBlurCallback(e);
+    }
   };
 
   const handleClick = () => {
@@ -52,3 +56,4 @@ export function useEditable(onBlurCallback=() => {}) {
     handleClick,
   };
 }
+

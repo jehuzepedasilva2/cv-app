@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import './Section.css';
 import './editables.css';
+import { useState } from 'react';
+import { useEditable } from './handleEditable';
 
 Section.propTypes = {
   sectionTitle: PropTypes.string,
@@ -16,6 +18,7 @@ SectionHeader.propTypes = {
 
 SectionInfo.propTypes = {
   information: PropTypes.array,
+  setInfo: PropTypes.func,
   isEducation: PropTypes.bool,
   isProjects: PropTypes.bool,
   isSkills: PropTypes.bool,
@@ -23,13 +26,25 @@ SectionInfo.propTypes = {
 
 SectionList.propTypes = {
   list: PropTypes.array,
+  information: PropTypes.array,
+  setInfo: PropTypes.func,
+  id: PropTypes.string,
   isEducation: PropTypes.bool,
 }
 
 SectionSkills.propTypes = {
-  information: PropTypes.array
+  information: PropTypes.array,
 }
 
+ListItem.propTypes = {
+  information: PropTypes.array, 
+  setInfo: PropTypes.func, 
+  content: PropTypes.string,
+  parentId: PropTypes.string, 
+  id: PropTypes.string,
+}
+
+// useEditable takes in a onBlurCallback and returns isClicked, divRef, handleBlur, handleClick,
 
 function Divider() {
   return <div className='divider'></div>
@@ -44,23 +59,63 @@ function SectionHeader({ title }) {
   );
 }
 
-function SectionList({ list, isEducation }) {
+function ListItem({ information, setInfo, content, parentId, id }) {
+  const handleBlurCallback = (e) => {
+    setInfo(information.map(item => {
+      if (item.id === parentId) {
+        return {
+          ...item,
+          highlights: item.highlights
+            .filter(h => h.id !== id || (e.target.innerHTML.trim() && e.target.innerHTML !== '<br>'))
+            .map(h => {
+              if (h.id === id) {
+                return { ...h, point: e.target.innerHTML };
+              }
+              return h;
+            })
+        };
+      }
+      return item;
+    }));
+  };
+  
+
+  const { 
+    isClicked, 
+    divRef, 
+    handleBlur, 
+    handleClick 
+  } = useEditable(handleBlurCallback);
+
+  return (
+      <li
+      id={`li-${id}`}
+      ref={divRef}
+      className={`editable list-item ${isClicked ? 'clicked' : ''}`}
+      suppressContentEditableWarning
+      contentEditable
+      onBlur={(e) => handleBlur(e)}
+      onFocus={handleClick}
+      onClick={handleClick}
+    >
+      {content}
+    </li>
+  );
+}
+
+
+function SectionList({ list, information, setInfo, id, isEducation }) {
+
   return (
     <ul>
       {list.map(l => {
         return (
           <div key={l.id} id={`outer-${l.id}`} className={`outer ${isEducation ? 'ed' : ''}`}> {/* remember that key goes on the parent */}
-            <li
-              id={`li-${l.id}`}
-              className='editable list-item'
-            >
-              {l.point}
-            </li>
+            <ListItem information={information} setInfo={setInfo} content={l.point} parentId={id} id={l.id} />
           </div>
       );})}
     </ul>
   );
-
 }
 
 function SectionSkills({ information }) {
@@ -78,7 +133,7 @@ function SectionSkills({ information }) {
   );
 }
 
-function SectionInfo({ information, isEducation, isProjects, isSkills }) {
+function SectionInfo({ information, setInfo, isEducation, isProjects, isSkills }) {
   if (isSkills) {
     return <SectionSkills information={information} />;
   }
@@ -101,7 +156,7 @@ function SectionInfo({ information, isEducation, isProjects, isSkills }) {
               <p className='sub-city-and-state'>{item.cityAndState}</p>
             </div>
             <div className='sub-bottom list'>
-              <SectionList list={item.highlights} isEducation={isEducation} />
+              <SectionList list={item.highlights} information={information} setInfo={setInfo} id={item.id} isEducation={isEducation} />
             </div>
           </div>
         );
@@ -110,12 +165,14 @@ function SectionInfo({ information, isEducation, isProjects, isSkills }) {
   );
 }
 
-
+// info is a list of objects
 function Section({ sectionTitle, information, isEducation=false, isProjects=false, isSkills=false }) {
+  const [info, setInfo] = useState(information);
+
   return (
     <div className='section'>
       <SectionHeader title={sectionTitle}/>
-      <SectionInfo information={information} isEducation={isEducation} isProjects={isProjects} isSkills={isSkills} />
+      <SectionInfo information={info} setInfo={setInfo} isEducation={isEducation} isProjects={isProjects} isSkills={isSkills} />
     </div>
   );
 }

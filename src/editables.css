@@ -11,10 +11,10 @@
   padding-left: 0.2rem;
   padding-right: 0.5rem;
   background-color: transparent;
-  transition: background-color 0.3s ease-in-out, 
+  transition: background-color 0.3s ease-in-out;
 }
 
-.editable.clicked {
+.editable.clicked.caret-on {
   background-color: var(--editable-clr);
 }
 
@@ -23,7 +23,6 @@
   outline: none;
   caret-color: transparent;
 }
-
 
 .caret-on:focus {
   outline: 2px solid rgba(173, 216, 230, 0.645);
