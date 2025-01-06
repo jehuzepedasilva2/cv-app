@@ -29,9 +29,9 @@ function Link({className, information, svg}) {
 
 function Name({ information }) {
   return (
-    <div className="name editable">
-      <h1>{information.name}</h1>
-    </div>
+      <div className='name-header editable'>
+        {information.name}
+      </div>
   );
 }
 
