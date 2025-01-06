@@ -1,89 +1,135 @@
-const experienceData1 = [
-  [
-    { id: 'name', type: 'div', value: 'Company Name', styles: { fontSize: '1rem', fontWeight: 'bold', marginLeft: '0.3rem' } },
-    { id: 'date', type: 'div', value: 'Month Year - Month Year', styles: { fontSize: '1rem', width: '11ch' } },
-  ],
-  [
-    { id: 'title', type: 'div', value: 'Job Title', styles: { fontSize: '0.8rem', marginLeft: '0.3rem', fontStyle: 'italic' } },
-    { id: 'state-city', type: 'div', value: 'City, State', styles: { fontSize: '0.8rem', fontStyle: 'italic' } },
-  ],
-  [
-    { id: 'desc1', type: 'list', value: 'Implemented microservices architecture using Node.js and Express, improving API response time by 25% and reducing server load by 30%.', styles: { fontSize: '0.8rem' } },
-    { id: 'desc2', type: 'list', value: 'Led a cross-functional team in implementing a new feature using React and Redux, resulting in a 20% increase in user engagement within the first month.', styles: { fontSize: '0.8rem' } },
-    { id: 'desc3', type: 'list', value: 'Optimized MySQL database queries, reducing page load times by 15% and enhancing overall application performance.', styles: { fontSize: '0.8rem' } },
-  ],
-];
-
-const experienceData2 = [
-  [
-    { id: 'name', type: 'div', value: 'Company Name', styles: { fontSize: '1rem', fontWeight: 'bold', marginLeft: '0.3rem' } },
-    { id: 'date', type: 'div', value: 'Month Year - Month Year', styles: { fontSize: '1rem', width: '11ch' } },
-  ],
-  [
-    { id: 'title', type: 'div', value: 'Job Title', styles: { fontSize: '0.8rem', marginLeft: '0.3rem', fontStyle: 'italic' } },
-    { id: 'state-city', type: 'div', value: 'City, State', styles: { fontSize: '0.8rem', fontStyle: 'italic' } },
-  ],
-  [
-    { id: 'desc1', type: 'list', value: 'Designed and implemented responsive user interfaces with Angular, leading to a 15% improvement in user satisfaction scores', styles: { fontSize: '0.8rem' } },
-    { id: 'desc2', type: 'list', value: 'Introduced automated testing processes with Jest and Enzyme, increasing test coverage by 30% and reducing post-release defects by 25%.', styles: { fontSize: '0.8rem' } },
-    { id: 'desc3', type: 'list', value: 'Contributed to the adoption of agile methodologies, utilizing Jira and Confluence, improving team productivity by 15% through iterative development cycles.', styles: { fontSize: '0.8rem' } },
-  ],
-]
-
-const educationData1 = [
-  // University Name and Date
-  [
-    {
-      id: 'uni-name',
-      type: 'div',
-      value: 'University Name',
-      styles: { fontSize: '1rem', fontWeight: 'bold', marginLeft: '0.3rem' },
-    },
-    {
-      id: 'uni-date',
-      type: 'div',
-      value: 'Month Year',
-      styles: { fontSize: '1rem', width: '11ch' },
-    },
-  ],
-  // Degree and City/State
-  [
-    {
-      id: 'uni-degree',
-      type: 'div',
-      value: 'Bachelor of Arts in Computer Science (GPA: 4.00/4.00)',
-      styles: { fontSize: '0.8rem', marginLeft: '0.3rem', fontStyle: 'italic' },
-    },
-    {
-      id: 'uni-state',
-      type: 'div',
-      value: 'City, State',
-      styles: { fontSize: '0.8rem', fontStyle: 'italic' },
-    },
-  ],
-  // Courses List
-  [
-    {
-      id: 'uni-courses',
-      type: 'list',
-      value:
-        'Data Structures and Algorithms (C++), Probability and Statistics for Computer Science (Python), Introduction to Computer Science (C++), Linear Algebra with Computational Applications (Python)',
-      styles: { fontSize: '0.8rem' },
-    },
-  ],
-];
-
-const personalData = {
+const contactInfo = {
   name: 'First Last',
   phone: 'XXX-XXX-XXXX', 
   email: 'firstlast@email.com', 
   linkedin: 'www.linkedin.com/in/firstlast', 
   github: 'www.github.com/firstlast'
-}
+};
+
+const educationInfo = [
+  {
+    id: 'uni-0',
+    name: 'University Name', 
+    date: 'Month Year', 
+    title: 'Bachelors of Arts in Computer Science (GPA 4.00/4.00)',
+    cityAndState: 'City, State', 
+    highlights: [
+      {
+        id: 'uni-0-hi-0',
+        point: 'Data Structures and Algorithms (C++), Prob & Stat in CS (Python), Intro to CS II (C++), Linear Algebra w/Computational Applications (Python)'
+      }
+    ]
+  },
+];
+
+const experienceInfo = [
+  {
+    id: 'exp-0', 
+    name: 'Company Name', 
+    date: 'Month Year - Month Year', 
+    title: 'Job Title', 
+    cityAndState: 'City, State', 
+    highlights: [
+      {
+        id: 'exp-0-hi-0', 
+        point: 'Implemented microservices architecture using Node.js and Express, improving API response time by 25% and reducing server load by 30%.', 
+      },
+      {
+        id: 'exp-0-hi-1', 
+        point: 'Led a cross-functional team in implementing a new feature using React and Redux, resulting in a 20% increase in user engagement within the first month.', 
+      }, 
+      {
+        id: 'exp-0-hi-2', 
+        point: 'Optimized MySQL database queries, reducing page load times by 15% and enhancing overall application performance.',
+      }
+    ]
+  }, 
+  {
+    id: 'exp-1', 
+    name: 'Company Name', 
+    date: 'Month Year - Month Year', 
+    title: 'Job Title', 
+    cityAndState: 'City, State', 
+    highlights: [
+      {
+        id: 'exp-1-hi-0', 
+        point: 'Designed and implemented responsive user interfaces with Angular, leading to a 15% improvement in user satisfaction scores.', 
+      },
+      {
+        id: 'exp-1-hi-1', 
+        point: 'Introduced automated testing processes with Jest and Enzyme, increasing test coverage by 30% and reducing post-release defects by 25%.', 
+      }, 
+      {
+        id: 'exp-1-hi-2', 
+        point: 'Contributed to the adoption of agile methodologies, utilizing Jira and Confluence, improving team productivity by 15% through iterative development cycles.',
+      }
+    ]
+  }, 
+];
+
+const projectsInfo = [
+  {
+    id: 'proj-0', 
+    name: 'Project Name', 
+    languages: 'React.js, Angular, Vue.js, Django, Flask, Ruby on Rails', 
+    highlights: [
+      {
+        id: 'proj-0-hi-0', 
+        point: 'Led the development of a microservices-based e-commerce platform using Node.js, resulting in a 40% increase in daily transactions within the first quarter.'
+      }, 
+      {
+        id: 'proj-0-hi-1', 
+        point: 'Designed and deployed a scalable RESTful API using Django and Django REST Framework, achieving a 30% improvement in data retrieval speed.'
+      }, 
+      {
+        id: 'proj-0-hi-2', 
+        point: 'Implemented a real-time chat feature using WebSocket and Socket.io, enhancing user engagement and reducing response time by 20%.'
+      }
+    ]
+  }, 
+  {
+    id: 'proj-1', 
+    name: 'Project Name', 
+    languages: 'Spring Boot, Express.js, TensorFlow, PyTorch, jQuery, Bootstrap', 
+    highlights: [
+      {
+        id: 'proj-1-hi-0', 
+        point: 'Developed a data visualization dashboard using D3.js, providing stakeholders with real-time insights and improving decision-making processes.'
+      }, 
+      {
+        id: 'proj-1-hi-1', 
+        point: 'Built a CI/CD pipeline using Jenkins and Docker, reducing deployment time by 40% and ensuring consistent and reliable releases.'
+      }
+    ]
+  }, 
+  {
+    id: 'proj-2', 
+    name: 'Project Name', 
+    languages: 'Python, Flask, Jinja2, Firebase, Bootstrap', 
+    highlights: [
+      {
+        id: 'proj-2-hi-0', 
+        point: 'Contributed to an open-source project on GitHub, collaborating with a global community and achieving 500+ stars and 50 forks.'
+      }, 
+      {
+        id: 'proj-2-hi-2', 
+        point: 'Implemented automated testing for a critical module using Selenium, reducing regression bugs by 30% and ensuring a more stable release cycle.'
+      }
+    ]
+  }
+];
+
+const technicalSkillsInfo = {
+  languages: 'Rust, Kotlin, Swift, Go, Scala, TypeScript, R, Perl, Haskell, Groovy, Julia, Dart', 
+  technologies: 'React.js, Angular, Vue.js, Django, Flask, Ruby on Rails, Spring Boot, Express.js, TensorFlow, PyTorch, jQuery, Bootstrap, Laravel, Flask, ASP.NET, Node.js, Electron, Android SDK, iOS SDK, Symfony', 
+  concepts: 'Compiler, Operating System, Virtual Memory, Cache Memory, Encryption, Decryption, Artificial Intelligence, Machine Learning, Neural Networks, API, Database Normalization, Agile Methodology, Cloud Computing'
+};
+
 
 export {
-  educationData1, 
-  experienceData1,
-  experienceData2, 
-  personalData
+  contactInfo, 
+  educationInfo, 
+  experienceInfo, 
+  projectsInfo,
+  technicalSkillsInfo
 };

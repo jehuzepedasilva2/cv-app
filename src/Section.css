@@ -1,0 +1,79 @@
+:root {
+  --text-color: black;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.section-title {
+  font-size: larger;
+}
+
+.divider {
+  width: 100%;
+  border: 0.05rem solid var(--text-color);
+}
+
+.section-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
+.sub-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.top, 
+.mid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.proj-line {
+  font-weight: normal;
+}
+
+.proj {
+  font-style: italic;
+  font-weight: normal;
+}
+
+.date {
+  font-size: 1rem;
+}
+
+ul {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.title, 
+.city-and-state {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.outer.ed > li::before {
+  content: 'Relevant Coursework: ';
+  font-weight: bold;
+}
