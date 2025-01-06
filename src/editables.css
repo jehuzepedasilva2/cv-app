@@ -1,0 +1,21 @@
+:root {
+  --editable-clr: lightgray;
+}
+
+.editable {
+  /* border: 1px solid red; */
+
+  border-radius: 1rem;
+  padding-left: 0.2rem;
+  padding-right: 0.5rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.editable:focus {
+  background-color: var(--editable-clr);
+}
+
+.editable.clicked {
+  background-color: var(--editable-clr);
+}
