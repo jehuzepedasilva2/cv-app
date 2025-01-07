@@ -32,7 +32,7 @@ p {
 .sub-section {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0rem;
 }
 
 .sub-top, 
@@ -54,6 +54,7 @@ p {
 .proj {
   font-style: italic;
   font-weight: normal;
+  font-size: 0.9rem;
 }
 
 .sub-date {
@@ -64,13 +65,8 @@ ul {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.3rem;
   font-size: 0.9rem;
-}
-
-.outer {
-  width: max-content;
-  max-width: fit-content;
 }
 
 .sub-title, 
@@ -79,7 +75,7 @@ ul {
   font-style: italic;
 }
 
-.outer.ed > li::before {
+.ed > .list-item > .list-item-content::before {
   content: 'Relevant Coursework: ';
   font-weight: bold;
 }
@@ -93,18 +89,13 @@ ul {
   font-size: 0.9rem;
 }
 
-.languages, 
-.technologies{
-  list-style: none;
-}
-
-.languages::before {
+.skills-languages::before {
   content: "Languages: ";
   font-weight: bold;
   font-size: 0.9rem;
 } 
 
-.technologies::before {
+.skills-technologies::before {
   content: "Technologies: ";
   font-weight: bold;
   font-size: 0.9rem;

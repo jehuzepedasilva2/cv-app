@@ -4,6 +4,8 @@
 
 .editable {
   /* border: 1px solid red; */
+  width: max-content;
+  max-width: fit-content;
 
   caret-color: transparent;
   border-radius: 1rem;

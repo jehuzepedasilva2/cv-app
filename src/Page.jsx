@@ -11,12 +11,15 @@ import {
 
 function Page() {
   return (
-    <div className='page'>
-      <TopPage contactInfo={contactInfo}/>
-      <Section sectionTitle='Education' information={educationInfo} isEducation={true} />
-      <Section sectionTitle='Experience' information={experienceInfo} />
-      <Section sectionTitle='Projects' information={projectsInfo} isProjects={true} />
-      <Section sectionTitle='Technical Skills' information={technicalSkillsInfo} isSkills={true} />
+    <div className="page">
+      {/* <div className='left page'> */}
+        <TopPage contactInfo={contactInfo}/>
+        <Section sectionTitle='Education' information={educationInfo} isEducation={true} />
+        <Section sectionTitle='Experience' information={experienceInfo} />
+        <Section sectionTitle='Projects' information={projectsInfo} isProjects={true} />
+        <Section sectionTitle='Technical Skills' information={technicalSkillsInfo} isSkills={true} />
+      {/* </div>
+      <div className="right"></div> */}
     </div>
   );
 }

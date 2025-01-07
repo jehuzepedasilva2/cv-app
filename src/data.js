@@ -71,7 +71,7 @@ const projectsInfo = [
   {
     id: 'proj-0', 
     name: 'Project Name', 
-    languages: 'React.js, Angular, Vue.js, Django, Flask, Ruby on Rails', 
+    title: 'React.js, Angular, Vue.js, Django, Flask, Ruby on Rails', 
     highlights: [
       {
         id: 'proj-0-hi-0', 
@@ -90,7 +90,7 @@ const projectsInfo = [
   {
     id: 'proj-1', 
     name: 'Project Name', 
-    languages: 'Spring Boot, Express.js, TensorFlow, PyTorch, jQuery, Bootstrap', 
+    title: 'Spring Boot, Express.js, TensorFlow, PyTorch, jQuery, Bootstrap', 
     highlights: [
       {
         id: 'proj-1-hi-0', 
@@ -105,7 +105,7 @@ const projectsInfo = [
   {
     id: 'proj-2', 
     name: 'Project Name', 
-    languages: 'Python, Flask, Jinja2, Firebase, Bootstrap', 
+    title: 'Python, Flask, Jinja2, Firebase, Bootstrap', 
     highlights: [
       {
         id: 'proj-2-hi-0', 
