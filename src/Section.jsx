@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import './Section.css';
 import './editables.css';
+import { AddButton, SubtractButton } from './Buttons';
 import { useState } from 'react';
 import { useEditable } from './handleEditable';
 
@@ -86,6 +87,7 @@ function Editable({ className, value, onChange}) {
 }
 
 function ListItem({ information, setInfo, content, parentId, id }) {
+
   const handleBlurCallback = (e) => {
         setInfo(information.map(item => {
           if (item.id === parentId) {
@@ -186,9 +188,10 @@ function SectionInfo({ information, setInfo, isProjects, isSkills, isEducation }
 
 function Section({ sectionTitle, information, isEducation = false, isProjects = false, isSkills = false }) {
   const [info, setInfo] = useState(information);
-  console.log(info);
   return (
-    <div className='section'>
+    <div className={`section ${sectionTitle.toLowerCase()}`}>
+      {!isSkills && <SubtractButton parentSection={`${sectionTitle.toLowerCase()}`} />}
+      {!isSkills && <AddButton information={info} setInfo={setInfo} isEducation={isEducation} isProject={isProjects} />}
       <SectionHeader title={sectionTitle} />
       <SectionInfo
         information={info}

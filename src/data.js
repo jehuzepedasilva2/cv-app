@@ -124,11 +124,54 @@ const technicalSkillsInfo = {
   technologies: 'React.js, Angular, Vue.js, Django, Flask, Ruby on Rails, Spring Boot, Express.js, TensorFlow, PyTorch, jQuery, Bootstrap, Laravel, Flask, ASP.NET, Node.js, Electron, Android SDK, iOS SDK, Symfony', 
 };
 
+const eduDefault = {
+  id: '',
+  name: 'University Name', 
+  date: 'Month Year', 
+  title: 'Bachelors of Arts in Computer Science (GPA 4.00/4.00)',
+  cityAndState: 'City, State', 
+  highlights: [
+    {
+      id: 'uni-0-hi-0',
+      point: 'Notable coursework'
+    }
+  ]
+}
+
+const expDefault = {
+  id: '', 
+  name: 'Company Name', 
+  date: 'Month Year - Month Year', 
+  title: 'Job Title', 
+  cityAndState: 'City, State', 
+  highlights: [
+    {
+      id: '', 
+      point: 'Job highlight', 
+    }
+  ]
+}
+
+const projDefault = {
+  id: '', 
+  name: 'Project Name', 
+  title: 'Languages used', 
+  highlights: [
+    {
+      id: '', 
+      point: 'proj highlight'
+    },
+  ]
+}
+
 
 export {
   contactInfo, 
   educationInfo, 
   experienceInfo, 
   projectsInfo,
-  technicalSkillsInfo
+  technicalSkillsInfo,
+  eduDefault, 
+  projDefault, 
+  expDefault,
 };

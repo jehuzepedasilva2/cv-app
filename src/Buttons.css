@@ -1,0 +1,57 @@
+.add-button, 
+.sub-button {
+  position: absolute;
+  background-color: #e5e7eb;
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: black;
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.15rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: scale 03.s ease-in-out;
+}
+
+.add-button {
+  top: -0.2rem;
+  right: 0rem;
+}
+
+.sub-button {
+  top: -0.2rem;
+  right: 1.5rem;
+  font-size: large;
+}
+
+.add-button:hover, 
+.sub-button:hover {
+  background-color: #cfd1d5;
+}
+
+.add-button:focus, 
+.sub-button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.add-button:focus-visible, 
+.sub-button:focus-visible {
+  box-shadow: none;
+}
+
+.add-button:active, 
+.sub-button:active
+
+{
+  transform: scale(1.02);
+}
