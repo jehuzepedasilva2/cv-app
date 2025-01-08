@@ -31,7 +31,7 @@ export function AddButton({ classes, information, setInfo, isEducation, isProjec
       obj = {
         id: `uni-${thisId}`,
         name: 'University Name', 
-        date: 'Month Year - Month Year', 
+        date: 'Month Year', 
         title: 'Degree and Major', 
         cityAndState: 'City, State', 
         highlights: [
@@ -174,7 +174,7 @@ export function SubSectionDeleteButton({ information, setInfo, id }) {
     const parentSub = document.querySelector(`.sub-section:has(#${id})`)
     parentSub.classList.remove('wiggle');
     parentSub.classList.add('shrink');
-    setTimeout(() => setInfo(information.filter(item => item.id !== id)), 200);
+    setTimeout(() => setInfo(information.filter(item => item.id !== id)), 300);
   }
 
   return (

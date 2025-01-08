@@ -71,6 +71,11 @@ ul {
   font-size: 0.9rem;
 }
 
+.sub-date, 
+.sub-name {
+  text-align: center;
+}
+
 .sub-title, 
 .sub-city-and-state {
   font-size: 0.9rem;
@@ -134,5 +139,5 @@ ul {
 }
 
 .sub-section.shrink {
-  animation: shrink-away 0.2s ease-in-out forwards;
+  animation: shrink-away 0.3s ease-in-out forwards;
 }

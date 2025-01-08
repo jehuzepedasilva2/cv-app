@@ -186,7 +186,10 @@ function SectionInfo({ information, setInfo, isProjects, isSkills, isEducation }
             key={key}
             className={`skills-${key}`}
             value={information[key]}
-            onChange={(e) => setInfo({ ...information, [key]: e.target.innerHTML })}
+            onChange={(e) => {
+              const text = sanitizeInput(e.target.innerHTML)
+              setInfo({ ...information, [key]: text});
+            }}
           />
         ))}
       </div>
