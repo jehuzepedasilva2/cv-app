@@ -4,9 +4,6 @@
 
 .page {
   min-height: 11in;
-  /* max-height: 11in; */
-  min-width: 8.5in;
-  max-width: 8.5in;
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -16,15 +13,26 @@
 }
 
 .left {
-  /* flex: 1; */
   overflow: scroll;
 }
 
 .right {
-  width: calc(100vw - 8.5in - 9.3rem);
+  width: calc(100vw - 8.5in);
   background-color: white;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   padding: 1rem;
+}
+
+@media (max-width: 13in) {
+  .page {
+    margin: 0.3rem;
+  }
+
+  .right {
+    margin: 0.3rem;
+    flex-direction: row;
+    width: calc(100vw - 2.5rem);
+  }
 }
