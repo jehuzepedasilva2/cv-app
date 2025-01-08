@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import './Buttons.css';
 import { useState } from 'react';
+import './Buttons.css';
 
 AddButton.propTypes = {
+  classes: PropTypes.string,
   information: PropTypes.array, 
   setInfo: PropTypes.func,
   isProject: PropTypes.bool, 
@@ -13,7 +14,14 @@ SubtractButton.propTypes = {
   parentSection: PropTypes.string,
 }
 
-export function AddButton({ information, setInfo, isEducation, isProject }) {
+SubSectionDeleteButton.propTypes = {
+  information: PropTypes.array, 
+  setInfo: PropTypes.func, 
+  id: PropTypes.string,
+  setIsDeleting: PropTypes.func,
+}
+
+export function AddButton({ classes, information, setInfo, isEducation, isProject }) {
   const [currId, setCurrId] = useState(1000);
 
   const handleClick = () => {
@@ -74,30 +82,106 @@ export function AddButton({ information, setInfo, isEducation, isProject }) {
     }
     setInfo([...information, obj]);
     setCurrId(currId + 1);
-  } 
+  }; 
 
   return (
     <button 
-      className="add-button"
+      className={`add-button ${classes}`}
       onClick={(e) => handleClick(e)}
     >
-      +
+      Add
     </button>
-  )
+  );
+}
+
+function addWiggles(parentSection, text, setText) {
+  const subSections = document.querySelectorAll(`.section.${parentSection} .sub-section`);
+  if (subSections.length === 0) {
+    if (text === 'Delete') {
+      setText('Edit');
+    } else {
+      setText('Delete');
+    }
+  }
+  subSections.forEach(sb => {
+    if (sb.classList.contains('wiggle')) {
+      sb.classList.remove('wiggle');
+      setText('Delete');
+    } else {
+      sb.classList.add('wiggle');
+      setText('Edit');
+    }
+  });
+}
+
+function enableDisableEdits(parentSection) {
+  const sectionsEditables = document.querySelectorAll(`.section.${parentSection} .sub-section .editable`);
+  sectionsEditables.forEach(edits => {
+    if (edits.contentEditable === 'true') {
+      edits.contentEditable = false;
+    } else {
+      edits.contentEditable = true;
+    }
+  });
+}
+
+function indDelVisibility(parentSection) {
+  const indDelButtons = document.querySelectorAll(`.section.${parentSection} .sub-section .ind-del`);
+  indDelButtons.forEach(b => {
+    if (b.classList.contains('vis')) {
+      b.classList.remove('vis');
+    } else {
+      b.classList.add('vis');
+    }
+  });
+}
+
+function enableDisableAddButton(parentSection) {
+  const sectionsAddButton = document.querySelector(`.section.${parentSection} .add-button`);
+  if (sectionsAddButton.classList.contains('no-hover')) {
+    sectionsAddButton.classList.remove('no-hover');
+    sectionsAddButton.disabled = false
+  } else {
+    sectionsAddButton.classList.add('no-hover');
+    sectionsAddButton.disabled = true;
+  }
 }
 
 // Set up individual delete buttons for sections!
 export function SubtractButton({ parentSection }) {
+  const [text, setText] = useState('Delete');
 
   const handleClick = () => {
-    const parentDiv = document.querySelectorAll(`.section.${parentSection} .sub-section`);
-    console.log(parentDiv);
+    addWiggles(parentSection, text, setText);
+    enableDisableEdits(parentSection);
+    indDelVisibility(parentSection)
+    enableDisableAddButton(parentSection);
+  }
+
+
+  return (
+    <button
+      className={`sub-button ${parentSection}`}
+      onClick={(e) => handleClick(e)}
+    >
+      {text}
+    </button>
+  );
+}
+
+export function SubSectionDeleteButton({ information, setInfo, id }) {
+  const handleClick = () => {
+    const parentSub = document.querySelector(`.sub-section:has(#${id})`)
+    parentSub.classList.remove('wiggle');
+    parentSub.classList.add('shrink');
+    setTimeout(() => setInfo(information.filter(item => item.id !== id)), 200);
   }
 
   return (
     <button
-      className={`sub-button`}
-      onClick={(e) => handleClick(e)}
+      id={id}
+      className='ind-del'
+      onClick={handleClick}
     >
       -
     </button>

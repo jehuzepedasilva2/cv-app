@@ -34,6 +34,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0rem;
+  position: relative;
 }
 
 .sub-top, 
@@ -100,4 +101,38 @@ ul {
   content: "Technologies: ";
   font-weight: bold;
   font-size: 0.9rem;
+}
+
+.sub-section.wiggle {
+  animation: wiggle 0.8s ease-in-out infinite;
+  border-radius: 1rem;
+  background-color: #e5e7eb;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: translateX(0) scale(1);
+  }
+  25% {
+    transform: translateX(-0.5px) scale(1.001); /* Move left by 5px */
+  } 
+  50% {
+    transform: translateX(0.5px) scale(1.001); /* Move right by 5px */
+  }
+  75% {
+    transform: translateX(-0.5px) scale(1); /* Back left by 5px */
+  }
+}
+
+@keyframes shrink-away {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+.sub-section.shrink {
+  animation: shrink-away 0.2s ease-in-out forwards;
 }

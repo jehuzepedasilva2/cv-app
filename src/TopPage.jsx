@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import './TopPage.css';
-import './Buttons.jsx';
 import { useEditable } from './handleEditable.jsx';
 import './editables.css'
 import { 

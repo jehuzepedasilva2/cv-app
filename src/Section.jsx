@@ -1,9 +1,25 @@
 import PropTypes from 'prop-types';
 import './Section.css';
 import './editables.css';
-import { AddButton, SubtractButton } from './Buttons';
+import { 
+  AddButton, 
+  SubtractButton,
+  SubSectionDeleteButton, 
+} from './Buttons';
 import { useState } from 'react';
 import { useEditable } from './handleEditable';
+
+function sanitizeInput(input) {
+  console.log(input);
+  let sanitizedString = input.replace(/&nbsp;/g, ' ') // Replace non-breaking spaces
+                                   .replace(/<br\s*\/?>/g, '\n')
+                                   .replace(/&amp;/g, '&'); 
+
+  sanitizedString = sanitizedString.trim();
+  console.log(sanitizedString)
+
+  return sanitizedString;
+}
 
 Section.propTypes = {
   sectionTitle: PropTypes.string,
@@ -35,6 +51,7 @@ SectionList.propTypes = {
 
 SubSection.propTypes = {
   information: PropTypes.array, 
+  infoId: PropTypes.string,
   item: PropTypes.object, 
   setInfo: PropTypes.func, 
   isProjects: PropTypes.bool, 
@@ -97,7 +114,8 @@ function ListItem({ information, setInfo, content, parentId, id }) {
                 .filter(h => h.id !== id || (e.target.innerHTML.trim() && e.target.innerHTML !== '<br>'))
                 .map(h => {
                   if (h.id === id) {
-                    return { ...h, point: e.target.innerHTML };
+                    const text = sanitizeInput(e.target.innerHTML);
+                    return { ...h, point: text };
                   }
                   return h;
                 })
@@ -130,15 +148,20 @@ function SectionList({ list, information, setInfo, id, isEducation }) {
   );
 }
 
-function SubSection({ information, item, setInfo, isProjects, isEducation }) {
+function SubSection({ information, infoId, item, setInfo, isProjects, isEducation }) {
   const updateField = (field) => (e) => {
-    setInfo(information.map(prevItem =>
-      prevItem.id === item.id ? { ...prevItem, [field]: e.target.innerHTML } : prevItem
-    ));
+    setInfo(information.map(prevItem => {
+      if (prevItem.id === item.id) {
+        const text = sanitizeInput(e.target.innerHTML);
+        return { ...prevItem, [field]: text };
+      }
+      return prevItem
+    }));
   };
 
   return (
     <div className='sub-section'>
+      <SubSectionDeleteButton information={information} setInfo={setInfo} id={infoId} />
       <div className='sub-top'>
         <Editable className='sub-name' value={item.name} onChange={updateField('name')} />
         {!isProjects && <Editable className='sub-date' value={item.date} onChange={updateField('date')} />}
@@ -176,6 +199,7 @@ function SectionInfo({ information, setInfo, isProjects, isSkills, isEducation }
         <SubSection
           key={item.id}
           information={information}
+          infoId={item.id}
           item={item}
           setInfo={setInfo}
           isProjects={isProjects}
@@ -191,7 +215,7 @@ function Section({ sectionTitle, information, isEducation = false, isProjects = 
   return (
     <div className={`section ${sectionTitle.toLowerCase()}`}>
       {!isSkills && <SubtractButton parentSection={`${sectionTitle.toLowerCase()}`} />}
-      {!isSkills && <AddButton information={info} setInfo={setInfo} isEducation={isEducation} isProject={isProjects} />}
+      {!isSkills && <AddButton classes={`${sectionTitle.toLowerCase()}`} information={info} setInfo={setInfo} isEducation={isEducation} isProject={isProjects} />}
       <SectionHeader title={sectionTitle} />
       <SectionInfo
         information={info}

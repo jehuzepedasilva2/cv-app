@@ -3,12 +3,8 @@ html {
 }
 
 #root {
-  /* for when i add right side */
-  /* display: flex;
-  gap: 0.5rem; */
-
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
-  padding-left: 12rem;
-  padding-right: 12rem;
+  display: flex;
+  gap: 0.3rem;
+  width: 100vw;
+  height: 100vh;
 }

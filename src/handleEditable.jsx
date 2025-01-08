@@ -4,16 +4,13 @@ import {
   useRef, 
 } from 'react';
 
-export function useEditable(onBlurCallback=() => {}) {
+
+export function useEditable(onBlurCallback) {
   const [isClicked, setIsClicked] = useState(false);
   const divRef = useRef();
 
-  const handleBlur = (e, lId=null) => {
-    if (lId) {
-      onBlurCallback(e, lId);
-    } else {
-      onBlurCallback(e);
-    }
+  const handleBlur = (e) => {
+    onBlurCallback(e);
   };
 
   const handleClick = () => {
