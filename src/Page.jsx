@@ -40,7 +40,11 @@ export default function Page() {
         </div>
       </div>
       <div className='right'>
-        <DownloadPDFButton />
+        <div className="layout-choices">
+        </div>
+        <div className="download-button-container">
+          <DownloadPDFButton />
+        </div>
       </div>
     </>
   );
