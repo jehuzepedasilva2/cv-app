@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import './Buttons.css';
 
+
 AddButton.propTypes = {
   classes: PropTypes.string,
   text: PropTypes.string,
@@ -14,8 +15,8 @@ AddButton.propTypes = {
 
 SubtractButton.propTypes = {
   parentSection: PropTypes.string,
-  defaultText: PropTypes.string,
-  alternateText: PropTypes.string,
+  defaultText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  alternateText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   additionalActions: PropTypes.func,
   targetElement: PropTypes.string,
   isListDel: PropTypes.bool,
@@ -126,24 +127,9 @@ export function AddButton({
 }
 
 
-function enableDisableEdits(parentSection, targetElement) {
-  const sectionsEditables = document.querySelectorAll(`.section.${parentSection} .${targetElement} .editable`);
-  sectionsEditables.forEach(edits => {
-    edits.contentEditable = edits.contentEditable !== 'true';
-  });
-}
-
 function indDelVisibility(parentSection, targetElement, isListItem=false) {
   const indDelButtons = document.querySelectorAll(`.section.${parentSection} .${targetElement} ${!isListItem ? '.ind-del' : '.ind-del-list'}`);
   indDelButtons.forEach(b => b.classList.toggle('vis'));
-}
-
-function enableDisableAddButton(parentSection) {
-  const sectionsAddButton = document.querySelector(`.section.${parentSection} .add-button`);
-  if (sectionsAddButton) {
-    sectionsAddButton.classList.toggle('no-hover');
-    sectionsAddButton.disabled = !sectionsAddButton.disabled;
-  }
 }
 
 function enableDisableListButtons(parentSection) {
@@ -177,22 +163,39 @@ function addWiggles(parentSection, targetElement, text, setText, toggleTexts) {
   });
 }
 
+function enableDisableAddButton(parentSection, isListItem=false) {
+  const sectionsAddButton = document.querySelector(`.section.${parentSection} ${!isListItem ? '.add-button' : '.sub-top-add'}`);
+  if (sectionsAddButton) {
+    sectionsAddButton.classList.toggle('no-hover');
+    sectionsAddButton.disabled = !sectionsAddButton.disabled;
+  }
+}
+
+function enableDisableEdits(parentSection, targetElement) {
+  const sectionsEditables = document.querySelectorAll(`.section.${parentSection} .${targetElement} .editable`);
+  sectionsEditables.forEach(edits => {
+    edits.contentEditable = edits.contentEditable !== 'true';
+  });
+}
+
 export function SubtractButton({
-  parentSection, //experience
+  parentSection,
   defaultText = 'Delete',
   alternateText = 'Edit',
   additionalActions = () => {},
-  targetElement='sub-section', //sub-bottom
-  isListDel=false, // true
+  targetElement='sub-section',
+  isListDel=false, 
 }) {
   const [buttonText, setButtonText] = useState(defaultText);
   const toggleTexts = [defaultText, alternateText];
 
   const handleClickList = () => {
     const [mainSection, section] = parentSection.split(' ');
+    console.log(mainSection, section); 
     addWiggles(mainSection, section, buttonText, setButtonText, toggleTexts);
     indDelVisibility(mainSection, section, true);
-    //TODO: disable add
+    enableDisableAddButton(mainSection, true);
+    enableDisableEdits(mainSection, `outer.${section}`);
   }
 
 

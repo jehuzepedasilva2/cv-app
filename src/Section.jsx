@@ -9,6 +9,10 @@ import {
 } from './Buttons';
 import { useState } from 'react';
 import { useEditable } from './handleEditable';
+import {
+  DeleteIcon, 
+  EditIcon
+} from './icons.jsx';
 
 function sanitizeInput(input) {
   console.log(input);
@@ -172,8 +176,8 @@ function SubSection({ information, infoId, item, setInfo, isProjects, isEducatio
           {!isEducation && <AddButton classes='sub-top-add' information={information} setInfo={setInfo} isEducation={isEducation} isProject={isProjects} text='+' id={infoId} />}
           {!isEducation && <SubtractButton 
             parentSection={`${isProjects ? 'projects' : isEducation ? 'education' : 'experience'} ${infoId}`} 
-            defaultText='-' 
-            alternateText='-' 
+            defaultText={DeleteIcon}
+            alternateText={EditIcon} 
             targetElement='sub-bottom'  
             isListDel={true}
           />}
