@@ -202,6 +202,9 @@ export function SubtractButton({
     indDelVisibility(mainSection, section, true);
     enableDisableAddButton(mainSection, true);
     enableDisableEdits(mainSection, `outer.${section}`);
+
+    //! IMPORTANT 
+    // TODO: Disable main section Add and Delete buttons.
   }
 
 

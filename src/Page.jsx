@@ -10,6 +10,9 @@ import {
   technicalSkillsInfo
 } from './data.js';
 
+//! IMPORTANT 
+// TODO: Add a help button at above layout choices with instructions on what to do.
+
 export default function Page() {
   return (
     <>
