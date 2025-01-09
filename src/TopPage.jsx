@@ -28,7 +28,14 @@ Name.propTypes = {
   setInfo: PropTypes.func,
 }
 
-function Link({ className, info, setInfo, infoKey, svg }) {
+function Link({ 
+  className, 
+  info, 
+  setInfo, 
+  infoKey, 
+  svg 
+}) {
+
   const handleBlurCallback = (e) => {
     setInfo({ ...info, [infoKey]: sanitizeInput(e.target.innerHTML) });
   };
@@ -59,12 +66,21 @@ function Link({ className, info, setInfo, infoKey, svg }) {
 }
 
 // info is an object
-function Name({ info, setInfo }) {
+function Name({ 
+  info, 
+  setInfo 
+}) {
+
   const handleBlurCallback = (e) => {
     setInfo({ ...info, name: sanitizeInput(e.target.innerHTML) });
   };
 
-  const { isClicked, divRef, handleBlur, handleClick } = useEditable(handleBlurCallback);
+  const { 
+    isClicked, 
+    divRef, 
+    handleBlur, 
+    handleClick 
+  } = useEditable(handleBlurCallback);
 
   return (
       <div 
@@ -81,17 +97,46 @@ function Name({ info, setInfo }) {
   );
 }
 
-function TopPage({ contactInfo }) {
+function TopPage({ 
+  contactInfo 
+}) {
   const [info, setInfo] = useState(contactInfo)
 
   return (
     <div className="top-page">
-      <Name info={info} setInfo={setInfo}/>
+      <Name 
+        info={info} 
+        setInfo={setInfo}
+      />
       <div className="media-links">
-        <Link className='phone' info={info} setInfo={setInfo} infoKey='phone' svg={PhoneIcon} />
-        <Link className="email" info={info} setInfo={setInfo} infoKey='email' svg={EmailIcon} />
-        <Link className="linked-in" info={info} setInfo={setInfo} infoKey='linkedin' svg={LinkedInIcon} />
-        <Link className="github" info={info} setInfo={setInfo} infoKey='github' svg={GitHubIcon} />
+        <Link 
+          className='phone' 
+          info={info} 
+          setInfo={setInfo} 
+          infoKey='phone' 
+          svg={PhoneIcon} 
+        />
+        <Link 
+          className="email" 
+          info={info} 
+          setInfo={setInfo} 
+          infoKey='email' 
+          svg={EmailIcon} 
+        />
+        <Link 
+          className="linked-in" 
+          info={info} 
+          setInfo={setInfo} 
+          infoKey='linkedin' 
+          svg={LinkedInIcon} 
+        />
+        <Link 
+          className="github" 
+          info={info} 
+          setInfo={setInfo} 
+          infoKey='github' 
+          svg={GitHubIcon}  
+        />
       </div>
     </div>
   );

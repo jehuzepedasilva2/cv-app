@@ -80,8 +80,17 @@ function SectionHeader({ title }) {
   );
 }
 
-function Editable({ className, value, onChange}) {
-  const { isClicked, divRef, handleBlur, handleClick } = useEditable(onChange);
+function Editable({ 
+  className, 
+  value, 
+  onChange
+}) {
+  const { 
+    isClicked,
+     divRef, 
+     handleBlur, 
+     handleClick 
+  } = useEditable(onChange);
 
   return (
     <div
@@ -98,7 +107,13 @@ function Editable({ className, value, onChange}) {
   );
 }
 
-function ListItem({ information, setInfo, content, parentId, id }) {
+function ListItem({ 
+  information, 
+  setInfo, 
+  content, 
+  parentId, 
+  id 
+}) {
 
   const handleBlurCallback = (e) => {
         setInfo(information.map(item => {
@@ -131,20 +146,45 @@ function ListItem({ information, setInfo, content, parentId, id }) {
   );
 }
 
-function SectionList({ list, information, setInfo, id, isEducation }) {
+function SectionList({ 
+  list, 
+  information, 
+  setInfo, 
+  id, 
+  isEducation 
+}) {
+
   return (
     <ul>
       {list.map((l) => (
         <div key={l.id} id={`outer-${l.id}`} className={`outer${isEducation ? ' ed' : ''} ${id}`}>
-          <ListItemDeleteButton information={information} setInfo={setInfo} id={l.id} />
-          <ListItem information={information} setInfo={setInfo} content={l.point} parentId={id} id={l.id} />
+          <ListItemDeleteButton 
+            information={information} 
+            setInfo={setInfo} 
+            id={l.id} 
+          />
+          <ListItem 
+            information={information} 
+            setInfo={setInfo} 
+            content={l.point} 
+            parentId={id} 
+            id={l.id} 
+          />
         </div>
       ))}
     </ul>
   );
 }
 
-function SubSection({ information, infoId, item, setInfo, isProjects, isEducation }) {
+function SubSection({ 
+  information, 
+  infoId, 
+  item, 
+  setInfo, 
+  isProjects, 
+  isEducation 
+}) {
+
   const updateField = (field) => (e) => {
     setInfo(information.map(prevItem => {
       if (prevItem.id === item.id) {
@@ -157,7 +197,11 @@ function SubSection({ information, infoId, item, setInfo, isProjects, isEducatio
 
   return (
     <div className='sub-section'>
-      <SubSectionDeleteButton information={information} setInfo={setInfo} id={infoId} />
+      <SubSectionDeleteButton 
+        information={information} 
+        setInfo={setInfo} 
+        id={infoId} 
+      />
       <div className='sub-top'>
         <div className='for-name'>
           <Editable className='sub-name' value={item.name} onChange={updateField('name')} />
@@ -177,20 +221,47 @@ function SubSection({ information, infoId, item, setInfo, isProjects, isEducatio
             isListDel={true}
           />}
         </div>
-        {!isProjects && <Editable className='sub-date' value={item.date} onChange={updateField('date')} />}
+        {!isProjects && <Editable 
+          className='sub-date' 
+          value={item.date} 
+          onChange={updateField('date')} 
+          />
+        }
       </div>
       <div className='sub-mid'>
-        <Editable className='sub-title' value={item.title} onChange={updateField('title')} />
-        {!isProjects && <Editable className='sub-city-and-state' value={item.cityAndState} onChange={updateField('cityAndState')} />}
+        <Editable 
+          className='sub-title' 
+          value={item.title} 
+          onChange={updateField('title')} 
+        />
+        {!isProjects && <Editable 
+          className='sub-city-and-state' 
+          value={item.cityAndState} 
+          onChange={updateField('cityAndState')} 
+          />
+        }
       </div>
       <div className='sub-bottom list'>
-        <SectionList list={item.highlights} information={information} setInfo={setInfo} id={item.id} isEducation={isEducation} />
+        <SectionList 
+          list={item.highlights} 
+          information={information} 
+          setInfo={setInfo} 
+          id={item.id} 
+          isEducation={isEducation} 
+        />
       </div>
     </div>
   );
 }
 
-function SectionInfo({ information, setInfo, isProjects, isSkills, isEducation }) {
+function SectionInfo({ 
+  information, 
+  setInfo, 
+  isProjects, 
+  isSkills, 
+  isEducation 
+}) {
+
   if (isSkills) {
     return (
       <div className='parent section-info skills'>
@@ -226,12 +297,26 @@ function SectionInfo({ information, setInfo, isProjects, isSkills, isEducation }
   );
 }
 
-function Section({ sectionTitle, information, isEducation = false, isProjects = false, isSkills = false }) {
+function Section({ 
+  sectionTitle, 
+  information, 
+  isEducation=false, 
+  isProjects=false, 
+  isSkills=false 
+}) {
+
   const [info, setInfo] = useState(information);
   return (
     <div className={`section ${sectionTitle.toLowerCase()}`}>
       {!isSkills && <SubtractButton parentSection={`${sectionTitle.toLowerCase()}`} />}
-      {!isSkills && <AddButton classes={`${sectionTitle.toLowerCase()}`} information={info} setInfo={setInfo} isEducation={isEducation} isProject={isProjects} />}
+      {!isSkills && <AddButton 
+        classes={`${sectionTitle.toLowerCase()}`} 
+        information={info} 
+        setInfo={setInfo} 
+        isEducation={isEducation} 
+        isProject={isProjects} 
+        />
+      }
       <SectionHeader title={sectionTitle} />
       <SectionInfo
         information={info}

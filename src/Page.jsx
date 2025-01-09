@@ -9,25 +9,12 @@ import {
   projectsInfo, 
   technicalSkillsInfo
 } from './data.js';
-import {
-  useRef, 
-  useEffect,
-} from 'react';
 
 export default function Page() {
-  const pageRef = useRef();
-  // do something here if height is larger than a sheet of paper
-  useEffect(() => { 
-    if (pageRef.current) { 
-      const pixels = pageRef.current.offsetHeight;
-      const ppi = 96;
-      console.log(pixels, pixels / ppi); 
-    }
-  }, [])
   return (
     <>
       <div className='left'>
-        <div id="pdf-document" ref={pageRef} className="page">
+        <div id="pdf-document" className="page">
           <TopPage 
             contactInfo={contactInfo}
           />

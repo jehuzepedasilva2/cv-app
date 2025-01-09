@@ -29,6 +29,12 @@ SubSectionDeleteButton.propTypes = {
   setIsDeleting: PropTypes.func,
 }
 
+ListItemDeleteButton.propTypes = {
+  information: PropTypes.array,
+  setInfo: PropTypes.func, 
+  id: PropTypes.string,
+}
+
 function mainSectionAdds(thisId, isEducation, isProject) {
   let obj;
   if (isEducation) {
@@ -186,6 +192,7 @@ export function SubtractButton({
   targetElement='sub-section',
   isListDel=false, 
 }) {
+
   const [buttonText, setButtonText] = useState(defaultText);
   const toggleTexts = [defaultText, alternateText];
 
@@ -215,12 +222,6 @@ export function SubtractButton({
       {buttonText}
     </button>
   );
-}
-
-ListItemDeleteButton.propTypes = {
-  information: PropTypes.array,
-  setInfo: PropTypes.func, 
-  id: PropTypes.string,
 }
 
 export function ListItemDeleteButton({
