@@ -88,10 +88,60 @@
   visibility: visible;
 }
 
-.add-button:disabled {
+.ind-del-list {
+  visibility: hidden;
+
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e7eb;
+  touch-action: manipulation;
+  transition: scale 0.5s ease-in-out;
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  color: black;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.ind-del-list.vis {
+  visibility: visible;
+}
+
+.ind-del, 
+.ind-del-list {
+  cursor: pointer;
+}
+
+button:disabled {
   opacity: 0.5;
 }
 
-.add-button.no-hover {
-    pointer-events: none;
+button.no-hover {
+  pointer-events: none;
+}
+
+.sub-top-add, 
+.sub-button.sub-bottom {
+  position: static;
+  width: 1rem;
+  height: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* top: 0.05rem;
+  left: 9rem; */
+}
+
+button.sub-section.wiggle {
+  animation: none;
 }

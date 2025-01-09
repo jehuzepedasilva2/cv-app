@@ -5,6 +5,7 @@ import {
   AddButton, 
   SubtractButton,
   SubSectionDeleteButton, 
+  ListItemDeleteButton,
 } from './Buttons';
 import { useState } from 'react';
 import { useEditable } from './handleEditable';
@@ -142,7 +143,8 @@ function SectionList({ list, information, setInfo, id, isEducation }) {
   return (
     <ul>
       {list.map((l) => (
-        <div key={l.id} id={`outer-${l.id}`} className={`outer ${isEducation ? 'ed' : ''}`}>
+        <div key={l.id} id={`outer-${l.id}`} className={`outer${isEducation ? ' ed' : ''} ${id}`}>
+          <ListItemDeleteButton information={information} setInfo={setInfo} id={l.id} />
           <ListItem information={information} setInfo={setInfo} content={l.point} parentId={id} id={l.id} />
         </div>
       ))}
@@ -165,7 +167,17 @@ function SubSection({ information, infoId, item, setInfo, isProjects, isEducatio
     <div className='sub-section'>
       <SubSectionDeleteButton information={information} setInfo={setInfo} id={infoId} />
       <div className='sub-top'>
-        <Editable className='sub-name' value={item.name} onChange={updateField('name')} />
+        <div className='for-name'>
+          <Editable className='sub-name' value={item.name} onChange={updateField('name')} />
+          {!isEducation && <AddButton classes='sub-top-add' information={information} setInfo={setInfo} isEducation={isEducation} isProject={isProjects} text='+' id={infoId} />}
+          {!isEducation && <SubtractButton 
+            parentSection={`${isProjects ? 'projects' : isEducation ? 'education' : 'experience'} ${infoId}`} 
+            defaultText='-' 
+            alternateText='-' 
+            targetElement='sub-bottom'  
+            isListDel={true}
+          />}
+        </div>
         {!isProjects && <Editable className='sub-date' value={item.date} onChange={updateField('date')} />}
       </div>
       <div className='sub-mid'>

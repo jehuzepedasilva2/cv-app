@@ -44,7 +44,7 @@ p {
   justify-content: space-between;
 }
 
-.sub-name {
+.editable.sub-name {
   font-size: 1rem;
   font-weight: bold;
 }
@@ -108,10 +108,16 @@ ul {
   font-size: 0.9rem;
 }
 
-.sub-section.wiggle {
+.sub-section.wiggle, 
+.outer.wiggle {
   animation: wiggle 0.8s ease-in-out infinite;
   border-radius: 1rem;
   background-color: #e5e7eb;
+}
+
+.for-name {
+  display: flex;
+  gap: 0.3rem;
 }
 
 @keyframes wiggle {
@@ -140,4 +146,8 @@ ul {
 
 .sub-section.shrink {
   animation: shrink-away 0.3s ease-in-out forwards;
+}
+
+.outer {
+  position: relative;
 }
