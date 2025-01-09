@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import './TopPage.css';
+import './styles/TopPage.css';
 import { useEditable } from './handleEditable.jsx';
-import './editables.css'
+import './styles/editables.css'
 import { 
   PhoneIcon, 
   EmailIcon, 
   LinkedInIcon, 
   GitHubIcon 
-} from './icons.jsx';
+} from './assets/icons.jsx';
 import { useState } from 'react';
 import { sanitizeInput } from './untils.js';
 

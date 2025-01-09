@@ -1,4 +1,4 @@
-import './DownloadPDF.css';
+import './styles/DownloadPDF.css';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 

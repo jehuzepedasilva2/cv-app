@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import './Buttons.css';
+import './styles/Buttons.css';
 
 
 AddButton.propTypes = {

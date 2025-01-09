@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import './Section.css';
-import './editables.css';
+import './styles/Section.css';
+import './styles/editables.css';
 import { 
   AddButton, 
   SubtractButton,
@@ -13,7 +13,7 @@ import {
   DeleteIcon, 
   EditIcon, 
   AddIcon,
-} from './icons.jsx';
+} from './assets/icons.jsx';
 import { sanitizeInput } from './untils.js';
 
 Section.propTypes = {

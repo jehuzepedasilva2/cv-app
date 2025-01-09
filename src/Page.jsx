@@ -1,6 +1,6 @@
 import Section from "./Section.jsx";
 import TopPage from "./TopPage.jsx";
-import './Page.css';
+import './styles/Page.css';
 import { DownloadPDFButton } from "./DownloadPDF.jsx";
 import { 
   contactInfo,
