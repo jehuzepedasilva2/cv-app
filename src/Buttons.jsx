@@ -107,7 +107,7 @@ export function AddButton({
     } else {
       setInfo(information.map(item => {
         if (item.id === id) {
-          return {...item, highlights: [...item.highlights, {id: `${id}-hi-${currId}`, point: 'New highlight.'}]}
+          return {...item, highlights: [...item.highlights, {id: `${id}-hi-${currId}`, point: `Additional highlight about project impact or technical details (e.g., Optimized database queries for better performance).`}]}
         }
         return item;
       }));
