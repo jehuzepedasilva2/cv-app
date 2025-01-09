@@ -1,7 +1,7 @@
 import Section from "./Section.jsx";
 import TopPage from "./TopPage.jsx";
 import './Page.css';
-import { DownloadPDFButton } from "./RightSide.jsx";
+import { DownloadPDFButton } from "./DownloadPDF.jsx";
 import { 
   contactInfo,
   educationInfo, 
