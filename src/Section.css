@@ -120,6 +120,20 @@ ul {
   gap: 0.3rem;
 }
 
+.sub-section.shrink, 
+.outer.shrink {
+  animation: shrink-away 0.3s ease-in-out forwards;
+}
+
+.outer {
+  position: relative;
+}
+
+.sub-top svg {
+  height: 20px;
+  width: 20px;
+}
+
 @keyframes wiggle {
   0%, 100% {
     transform: translateX(0) scale(1);
@@ -142,17 +156,4 @@ ul {
   to {
     transform: scale(0);
   }
-}
-
-.sub-section.shrink {
-  animation: shrink-away 0.3s ease-in-out forwards;
-}
-
-.outer {
-  position: relative;
-}
-
-.sub-top svg {
-  height: 20px;
-  width: 20px;
 }

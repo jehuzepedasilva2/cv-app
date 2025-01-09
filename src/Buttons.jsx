@@ -5,7 +5,7 @@ import './Buttons.css';
 
 AddButton.propTypes = {
   classes: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   information: PropTypes.array, 
   setInfo: PropTypes.func,
   isProject: PropTypes.bool, 
@@ -191,7 +191,6 @@ export function SubtractButton({
 
   const handleClickList = () => {
     const [mainSection, section] = parentSection.split(' ');
-    console.log(mainSection, section); 
     addWiggles(mainSection, section, buttonText, setButtonText, toggleTexts);
     indDelVisibility(mainSection, section, true);
     enableDisableAddButton(mainSection, true);
@@ -227,14 +226,16 @@ ListItemDeleteButton.propTypes = {
 export function ListItemDeleteButton({
   information, 
   setInfo, 
-  id, // the arrays item id to find which list item to delete. should be in the form of 'exp-0-hi-0'
+  id,
 }) {
 
-  // proj-1-hi-1
   const handleClick = () => {
     const [aName, aId] = id.split('-').slice(0, 2);
     const parentId = `${aName}-${aId}`;
-    setInfo(information.map(item => {
+    const parentDiv = document.querySelector(`#outer-${id}`);
+    parentDiv.classList.remove('wiggle');
+    parentDiv.classList.add('shrink');
+    setTimeout(() => setInfo(information.map(item => {
       if (item.id === parentId) {
         return {
           ...item, 
@@ -242,7 +243,7 @@ export function ListItemDeleteButton({
         }
       }
       return item;
-    }));
+    })), 300);
   }
 
   return (

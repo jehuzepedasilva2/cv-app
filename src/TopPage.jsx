@@ -9,6 +9,7 @@ import {
   GitHubIcon 
 } from './icons.jsx';
 import { useState } from 'react';
+import { sanitizeInput } from './untils.js';
 
 Link.propTypes = {
   className: PropTypes.string,
@@ -29,7 +30,7 @@ Name.propTypes = {
 
 function Link({ className, info, setInfo, infoKey, svg }) {
   const handleBlurCallback = (e) => {
-    setInfo({ ...info, [infoKey]: e.target.innerHTML });
+    setInfo({ ...info, [infoKey]: sanitizeInput(e.target.innerHTML) });
   };
 
   const { 
@@ -60,7 +61,7 @@ function Link({ className, info, setInfo, infoKey, svg }) {
 // info is an object
 function Name({ info, setInfo }) {
   const handleBlurCallback = (e) => {
-    setInfo({ ...info, name: e.target.innerHTML });
+    setInfo({ ...info, name: sanitizeInput(e.target.innerHTML) });
   };
 
   const { isClicked, divRef, handleBlur, handleClick } = useEditable(handleBlurCallback);

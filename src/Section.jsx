@@ -11,22 +11,10 @@ import { useState } from 'react';
 import { useEditable } from './handleEditable';
 import {
   DeleteIcon, 
-  EditIcon
+  EditIcon, 
+  AddIcon,
 } from './icons.jsx';
-
-function sanitizeInput(input) {
-  console.log(input);
-  let sanitizedString = (
-      input.replace(/&nbsp;/g, ' ') // Replace non-breaking spaces
-      .replace(/<br\s*\/?>/g, '\n')
-      .replace(/&amp;/g, '&')
-    ); 
-
-  sanitizedString = sanitizedString.trim();
-  console.log(sanitizedString)
-
-  return sanitizedString;
-}
+import { sanitizeInput } from './untils.js';
 
 Section.propTypes = {
   sectionTitle: PropTypes.string,
@@ -173,7 +161,14 @@ function SubSection({ information, infoId, item, setInfo, isProjects, isEducatio
       <div className='sub-top'>
         <div className='for-name'>
           <Editable className='sub-name' value={item.name} onChange={updateField('name')} />
-          {!isEducation && <AddButton classes='sub-top-add' information={information} setInfo={setInfo} isEducation={isEducation} isProject={isProjects} text='+' id={infoId} />}
+          {!isEducation && <AddButton 
+            classes='sub-top-add' 
+            information={information} 
+            setInfo={setInfo} 
+            isEducation={isEducation} 
+            isProject={isProjects} 
+            text={AddIcon} 
+            id={infoId} />}
           {!isEducation && <SubtractButton 
             parentSection={`${isProjects ? 'projects' : isEducation ? 'education' : 'experience'} ${infoId}`} 
             defaultText={DeleteIcon}
