@@ -1,7 +1,11 @@
 import Section from "./Section.jsx";
 import TopPage from "./TopPage.jsx";
+import LayoutsSide from "./Layouts.jsx";
 import './styles/Page.css';
-import { DownloadPDFButton } from "./DownloadPDF.jsx";
+import { 
+  DownloadPDFButton, 
+  HelpButton 
+} from "./Buttons.jsx";
 import { 
   contactInfo,
   educationInfo, 
@@ -9,9 +13,6 @@ import {
   projectsInfo, 
   technicalSkillsInfo
 } from './data.js';
-
-//! IMPORTANT 
-// TODO: Add a help button at above layout choices with instructions on what to do.
 
 export default function Page() {
   return (
@@ -43,7 +44,9 @@ export default function Page() {
         </div>
       </div>
       <div className='right'>
-        <div className="layout-choices">
+        <LayoutsSide />
+        <div className="help-button-container">
+          <HelpButton />
         </div>
         <div className="download-button-container">
           <DownloadPDFButton />

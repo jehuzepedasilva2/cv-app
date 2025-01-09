@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import './styles/Buttons.css';
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 AddButton.propTypes = {
   classes: PropTypes.string,
@@ -184,6 +185,15 @@ function enableDisableEdits(parentSection, targetElement) {
   });
 }
 
+function enableDisableMainAddSubButtons(classes) {
+  const addButton = document.querySelector(`button.add-button.${classes}`);
+  const subButton = document.querySelector(`button.sub-button.${classes}`);
+  addButton.classList.toggle('no-hover');
+  subButton.classList.toggle('no-hover');
+  addButton.disabled = !addButton.disabled;
+  subButton.disabled = !subButton.disabled;
+}
+
 export function SubtractButton({
   parentSection,
   defaultText = 'Delete',
@@ -202,9 +212,7 @@ export function SubtractButton({
     indDelVisibility(mainSection, section, true);
     enableDisableAddButton(mainSection, true);
     enableDisableEdits(mainSection, `outer.${section}`);
-
-    //! IMPORTANT 
-    // TODO: Disable main section Add and Delete buttons.
+    enableDisableMainAddSubButtons(mainSection);
   }
 
 
@@ -214,7 +222,7 @@ export function SubtractButton({
     enableDisableEdits(parentSection, targetElement);
     indDelVisibility(parentSection, targetElement);
     enableDisableAddButton(parentSection);
-    additionalActions(); // Executes additional custom actions passed as props
+    additionalActions();
   };
 
   return (
@@ -247,7 +255,7 @@ export function ListItemDeleteButton({
         }
       }
       return item;
-    })), 250);
+    })), 500);
   }
 
   return (
@@ -270,7 +278,7 @@ export function SubSectionDeleteButton({
     const parentSub = document.querySelector(`.sub-section:has(#${id})`)
     parentSub.classList.remove('wiggle');
     parentSub.classList.add('shrink');
-    setTimeout(() => setInfo(information.filter(item => item.id !== id)), 250);
+    setTimeout(() => setInfo(information.filter(item => item.id !== id)), 500);
   }
 
   return (
@@ -283,3 +291,63 @@ export function SubSectionDeleteButton({
     </button>
   );
 }
+
+export function DownloadPDFButton() {
+  const handleDownload = () => {
+    const buttons = document.querySelectorAll('button:not(.ind-del):not(.ind-del-list)');
+    const editables = document.querySelectorAll('.editable');
+    buttons.forEach(button => button.style.visibility = 'hidden');
+    editables.forEach(edit => {
+      if (edit.classList.contains('clicked')) {
+        edit.classList.remove('clicked');
+        edit.classList.remove('caret-on');
+      }
+    });
+  
+    const input = document.getElementById('pdf-document');
+    html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
+      const pdfWidth = 595.28; // A4 page width in points
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+  
+      const scale = pdfWidth / canvasWidth; // Scale to fit the width of an A4 page
+      const pdfHeight = canvasHeight * scale; // Scale the height proportionally
+  
+      const pdf = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]); // Custom size for the entire content
+  
+      const imgData = canvas.toDataURL('image/png');
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+  
+      pdf.save('new-resume.pdf'); // Name of the downloaded PDF file
+    }).finally(() => {
+      buttons.forEach(button => button.style.visibility = 'visible');
+    }).catch((error) => {
+      console.error("Error generating PDF:", error);
+    });
+  };  
+
+  return (
+    <button
+      className="download-button"
+      onClick={handleDownload}
+    >
+      Download PDF
+    </button>
+  );
+}
+
+export function HelpButton() {
+  const handleClick = () => {
+    console.log('clicked');
+  };
+
+  return (
+    <button
+      className='help-button'
+      onClick={handleClick}
+    >
+      Help
+    </button>
+  );
+}
+

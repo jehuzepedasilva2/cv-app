@@ -12,6 +12,8 @@ p {
   flex-direction: column;
   gap: 0.3rem;
   position: relative;
+
+  transition: height 0.5s ease;
 }
 
 .section-title {
@@ -28,6 +30,7 @@ p {
   flex-direction: column;
   gap: 0.5rem;
   padding-left: 1rem;
+
 }
 
 .sub-section {
@@ -120,9 +123,10 @@ ul {
   gap: 0.3rem;
 }
 
-.sub-section.shrink, 
+.sub-section.shrink,
 .outer.shrink {
-  animation: shrink-away 0.25s ease-in-out forwards;
+  animation: shrink-away 0.5s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  transform-origin: center;
 }
 
 .outer {
@@ -139,21 +143,24 @@ ul {
     transform: translateX(0) scale(1);
   }
   25% {
-    transform: translateX(-0.5px) scale(1.001); /* Move left by 5px */
+    transform: translateX(-0.5px) scale(1.001); 
   } 
   50% {
-    transform: translateX(0.5px) scale(1.001); /* Move right by 5px */
+    transform: translateX(0.5px) scale(1.001); 
   }
   75% {
-    transform: translateX(-0.5px) scale(1); /* Back left by 5px */
+    transform: translateX(-0.5px) scale(1);
   }
 }
 
 @keyframes shrink-away {
   from {
     transform: scale(1);
+    opacity: 1;
   }
   to {
     transform: scale(0);
+    opacity: 0;
   }
 }
+

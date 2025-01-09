@@ -7,7 +7,9 @@ import {
   SubSectionDeleteButton, 
   ListItemDeleteButton,
 } from './Buttons';
-import { useState } from 'react';
+import { 
+  useState, 
+} from 'react';
 import { useEditable } from './handleEditable';
 import {
   DeleteIcon, 
@@ -281,7 +283,9 @@ function SectionInfo({
   }
 
   return (
-    <div className='section-info'>
+    <div 
+      className='section-info'
+    >
       {information.map((item) => (
         <SubSection
           key={item.id}
@@ -306,9 +310,14 @@ function Section({
 }) {
 
   const [info, setInfo] = useState(information);
+
   return (
-    <div className={`section ${sectionTitle.toLowerCase()}`}>
-      {!isSkills && <SubtractButton parentSection={`${sectionTitle.toLowerCase()}`} />}
+    <div 
+      className={`section ${sectionTitle.toLowerCase()}`}
+    >
+      {!isSkills && <SubtractButton 
+        parentSection={`${sectionTitle.toLowerCase()}`} 
+        />}
       {!isSkills && <AddButton 
         classes={`${sectionTitle.toLowerCase()}`} 
         information={info} 
