@@ -247,7 +247,7 @@ export function ListItemDeleteButton({
         }
       }
       return item;
-    })), 300);
+    })), 250);
   }
 
   return (
@@ -270,7 +270,7 @@ export function SubSectionDeleteButton({
     const parentSub = document.querySelector(`.sub-section:has(#${id})`)
     parentSub.classList.remove('wiggle');
     parentSub.classList.add('shrink');
-    setTimeout(() => setInfo(information.filter(item => item.id !== id)), 300);
+    setTimeout(() => setInfo(information.filter(item => item.id !== id)), 250);
   }
 
   return (
