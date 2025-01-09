@@ -1,7 +1,7 @@
 import Section from "./Section.jsx";
 import TopPage from "./TopPage.jsx";
 import './Page.css';
-import RightSide from "./RightSide.jsx";
+import { DownloadPDFButton } from "./RightSide.jsx";
 import { 
   contactInfo,
   educationInfo, 
@@ -14,7 +14,7 @@ import {
   useEffect,
 } from 'react';
 
-function Page() {
+export default function Page() {
   const pageRef = useRef();
   // do something here if height is larger than a sheet of paper
   useEffect(() => { 
@@ -28,18 +28,33 @@ function Page() {
     <>
       <div className='left'>
         <div id="pdf-document" ref={pageRef} className="page">
-          <TopPage contactInfo={contactInfo}/>
-          <Section sectionTitle='Education' information={educationInfo} isEducation={true} />
-          <Section sectionTitle='Experience' information={experienceInfo} />
-          <Section sectionTitle='Projects' information={projectsInfo} isProjects={true} />
-          <Section sectionTitle='Technical Skills' information={technicalSkillsInfo} isSkills={true} />
+          <TopPage 
+            contactInfo={contactInfo}
+          />
+          <Section 
+            sectionTitle='Education' 
+            information={educationInfo} 
+            isEducation={true} 
+          />
+          <Section 
+            sectionTitle='Experience' 
+            information={experienceInfo} 
+          />
+          <Section 
+            sectionTitle='Projects' 
+            information={projectsInfo} 
+            isProjects={true} 
+          />
+          <Section 
+            sectionTitle='Technical Skills' 
+            information={technicalSkillsInfo} 
+            isSkills={true} 
+          />
         </div>
       </div>
       <div className='right'>
-        <RightSide />
+        <DownloadPDFButton />
       </div>
     </>
   );
 }
-
-export default Page;

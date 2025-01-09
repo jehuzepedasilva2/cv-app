@@ -2,10 +2,9 @@ import './RightSide.css';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-export default function RightSide() {
-
+export function DownloadPDFButton() {
   const handleDownload = () => {
-    const buttons = document.querySelectorAll('button:not(.ind-del)');
+    const buttons = document.querySelectorAll('button:not(.ind-del):not(.ind-del-list)');
     const editables = document.querySelectorAll('.editable');
     buttons.forEach(button => button.style.visibility = 'hidden');
     editables.forEach(edit => {
@@ -16,27 +15,30 @@ export default function RightSide() {
     });
   
     const input = document.getElementById('pdf-document');
-    html2canvas(input).then((canvas) => {
+    html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
+      const pdfWidth = 595.28; // A4 page width in points
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+  
+      const scale = pdfWidth / canvasWidth; // Scale to fit the width of an A4 page
+      const pdfHeight = canvasHeight * scale; // Scale the height proportionally
+  
+      const pdf = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]); // Custom size for the entire content
+  
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-  
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-  
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+  
       pdf.save('new-resume.pdf'); // Name of the downloaded PDF file
     }).finally(() => {
-      buttons.forEach(button =>  button.style.visibility = 'visible');
+      buttons.forEach(button => button.style.visibility = 'visible');
     }).catch((error) => {
       console.error("Error generating PDF:", error);
     });
-  };
-  
-  
+  };  
 
   return (
     <button
-      className='download-button'
+      className="download-button"
       onClick={handleDownload}
     >
       Download PDF

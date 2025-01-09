@@ -1,8 +1,5 @@
 html {
   background-color: lightgray;
-  /* overflow-x: hidden; */
-  /* for safari x-axis scrolling */
-  /* overscroll-behavior-x: none; */
 }
 
 #root {
