@@ -24,8 +24,8 @@
 
 .help-modal-content {
   position: relative;
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
   background-color: var(--help-modal-content-bg-clr);
   border-radius: 1rem;
   display: flex;
@@ -34,6 +34,7 @@
   justify-content: center;
   transform: translateY(-160%);
   transition: transform 0.4s ease-in-out;
+  color: var(--help-modal-text-clr);
 }
 
 .help-modal-content.vis {
@@ -59,11 +60,13 @@
 .content {
   padding: 6rem;
   text-align: center;
+  font-weight: bold;
 }
 
 .help-modal button svg {
  height: 16px;
  width: 16px;
+ fill: var(--help-modal-text-clr);
 }
 
 .icon svg {
@@ -71,7 +74,7 @@
   height: 5%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .help-modal-content {
     height: 60%;
     width: 60%;

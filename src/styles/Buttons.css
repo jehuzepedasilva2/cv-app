@@ -122,6 +122,10 @@
   cursor: pointer;
 }
 
+button > svg {
+  fill: var(--sections-buttons-svg-clr);
+}
+
 button:disabled {
   opacity: 0.5;
 }

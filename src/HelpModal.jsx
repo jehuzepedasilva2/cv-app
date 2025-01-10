@@ -8,9 +8,6 @@ export default function HelpModal() {
       <div className="help-modal-content">
         <CloseModalButton />
         <div className="content">
-          {/* <div className='icon'>
-            {ResumeIcon}
-          </div> */}
           Welcome to the Resume Builder App! To begin, simply click on one of the
           available resume layouts to select a format that fits your style. You
           can then edit your resume directly by clicking on any field within the

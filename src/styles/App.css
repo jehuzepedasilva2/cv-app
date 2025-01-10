@@ -24,12 +24,124 @@
 
 :root {
   /* web pages background color (only seen through a little)*/
+  --html-bg-clr: #f3f4f6;
+
+  /* layout options/right side */
+  --layout-side-text-clr: #334155;
+  --layout-options-container-bx-shadow-clr: #e2e8f0;
+  --curr-picked-layout-border-clr: #93c5fd;
+  --unchosen-layout-border-clr: #cbd5e1;
+  --layout-bg-clr: #e0f2fe;
+
+  /* resume/right side */
+  --resume-bg-clr: #ffffff;
+  --resume-font: 'Georgia', serif;
+  --resume-text-color: black;
+  --on-wiggle-bg-clr: #f1f5f9;
+  --layout-side-and-button-font: 'Poppins', sans-serif;
+  --layout-side-bg-clr: #f8fafc;
+
+  /* resume buttons */
+  --sections-buttons-bg-clr: #e0f2fe;
+  --sections-buttons-text-clr: #1e3a8a;
+  --sections-buttons-text-decoration-clr: #93c5fd;
+  --sections-buttons-box-shadow-one: rgba(0, 0, 0, 0.2);
+  --sections-buttons-box-shadow-two: rgba(0, 0, 0, 0.1);
+  --sections-buttons-on-hover-clr: #bae6fd;
+  --sections-buttons-svg-clr: #facc15;
+  /* right side/layout side buttons */
+  --layout-side-button-text-decoration-clr: #93c5fd;
+  --layout-side-button-text-clr: white;
+  --download-button-bg-clr: #38bdf8;
+  --download-button-border-clr: #0284c7;
+  --download-button-box-shadow-one: rgba(0, 0, 0, 0.4);
+  --download-button-box-shadow-two: rgba(56, 189, 248, 0.5);
+  --download-button-on-hover-clr: #0ea5e9;
+  --help-button-bg-clr: #60a5fa;
+  --help-button-border-clr: #3b82f6;
+  --help-button-box-shadow-one: rgba(0, 0, 0, 0.4);
+  --help-button-box-shadow-two: rgba(96, 165, 250, 0.5);
+  --help-button-on-hover-clr: #3b82f6;
+
+  /* editable divs */
+  --editable-clr: #f1f5f9;
+  --editable-on-focus-clr: rgba(191, 219, 254, 0.7);
+
+  /* help modal */
+  --help-modal-content-bg-clr: #ffffff;
+  --help-modal-overlay-bg-clr: rgba(0, 0, 0, 0.3);
+  --help-modal-font: 'Poppins', sans-serif;
+  --help-modal-text-clr: #334155;
+
+  /* svgs for links */
+  --svg-clr: black;
+}
+
+.dark-blue-theme {
+  /* web pages background color (only seen through a little)*/
+  --html-bg-clr: #1e293b;
+
+  /* layout options/right side */
+  --layout-side-text-clr: white;
+  --layout-options-container-bx-shadow-clr: #334155;
+  --curr-picked-layout-border-clr: #facc15;
+  --unchosen-layout-border-clr: #475569;
+  --layout-bg-clr: #1e293b;
+
+  /* resume/right side */
+  --resume-bg-clr: #0f172a;
+  --resume-font: 'Tahoma', sans-serif;
+  --resume-text-color: #f1f5f9;
+  --on-wiggle-bg-clr: #334155;
+  --layout-side-and-button-font: 'Montserrat', sans-serif;
+  --layout-side-bg-clr: #1e293b;
+
+  /* resume buttons */
+  --sections-buttons-bg-clr: #334155;
+  --sections-buttons-text-clr: #facc15;
+  --sections-buttons-text-decoration-clr: #475569;
+  --sections-buttons-box-shadow-one: rgba(0, 0, 0, 0.4);
+  --sections-buttons-box-shadow-two: rgba(0, 0, 0, 0.2);
+  --sections-buttons-on-hover-clr: #475569;
+  --sections-buttons-svg-clr: #facc15;
+  /* right side/layout side buttons */
+  --layout-side-button-text-decoration-clr: #facc15;
+  --layout-side-button-text-clr: white;
+  --download-button-bg-clr: #22c55e;
+  --download-button-border-clr: #16a34a;
+  --download-button-box-shadow-one: rgba(0, 0, 0, 0.4);
+  --download-button-box-shadow-two: rgba(34, 197, 94, 0.5);
+  --download-button-on-hover-clr: #16a34a;
+  --help-button-bg-clr: #0ea5e9;
+  --help-button-border-clr: #0284c7;
+  --help-button-box-shadow-one: rgba(0, 0, 0, 0.4);
+  --help-button-box-shadow-two: rgba(14, 165, 233, 0.5);
+  --help-button-on-hover-clr: #0284c7;
+
+  /* editable divs */
+  --editable-clr: #1e293b;
+  --editable-on-focus-clr: rgba(60, 72, 100, 0.7);
+
+  /* help modal */
+  --help-modal-content-bg-clr: #0f172a;
+  --help-modal-overlay-bg-clr: rgba(0, 0, 0, 0.8);
+  --help-modal-font: 'Montserrat', sans-serif;
+  --help-modal-text-clr: white;
+
+  /* svgs for links */
+  --svg-clr: white;
+}
+
+.original-theme {
+  /* web pages background color (only seen through a little)*/
   --html-bg-clr: lightgray;
 
   /* layout options/right side */
+  --layout-side-text-clr: black;
   --layout-options-container-bx-shadow-clr: lightgray;
   --curr-picked-layout-border-clr: #4ade8094;
   --unchosen-layout-border-clr: gray;
+  --layout-bg-clr: lightgray;
 
   /* resume/right side */
   --resume-bg-clr: white;
@@ -46,6 +158,7 @@
   --sections-buttons-box-shadow-one: rgba(0, 0, 0, 0.5);
   --sections-buttons-box-shadow-two: rgba(0, 0, 0, 0.06);
   --sections-buttons-on-hover-clr: #cfd1d5;
+  --sections-buttons-svg-clr: black;
   /* right side/layout side buttons */
   --layout-side-button-text-decoration-clr: #D1D5DB;
   --layout-side-button-text-clr: white;
@@ -68,4 +181,8 @@
   --help-modal-content-bg-clr: white;
   --help-modal-overlay-bg-clr: rgba(0, 0, 0, 0.4);
   --help-modal-font: 'quicksandbold';
+  --help-modal-text-clr: black;
+
+    /* svgs for links */
+    --svg-clr: black;
 }

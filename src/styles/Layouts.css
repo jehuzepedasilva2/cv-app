@@ -8,8 +8,7 @@
 
   width: 100%;
   height: 100%;
-  background-color: lightgray;
-
+  background-color: var(--layout-bg-clr);
   border-radius: 1rem;
 }
 

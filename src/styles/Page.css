@@ -36,6 +36,7 @@
 .left {
   overflow: scroll;
   font-family: var(--resume-font);
+  color: var(--resume-text-color);
 }
 
 .right, 
@@ -51,6 +52,8 @@ button {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+
+  color: var(--layout-side-text-clr);
 
   gap: 1.5rem;
 }

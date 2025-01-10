@@ -36,4 +36,9 @@
 .top-page svg {
   height: 16px;
   width: 16px;
+  fill: var(--svg-clr);
+}
+
+.top-page svg > g {
+  fill: var(--svg-clr);
 }
