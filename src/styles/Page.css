@@ -25,6 +25,16 @@
 
 }
 
+.all-content {
+  box-sizing: border-box;
+
+  display: flex;
+  gap: 0.3rem;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  padding: 0.5rem;
+}
 
 .page {
   min-height: 11in;
@@ -34,8 +44,19 @@
   gap: 1rem;
   border-radius: 0.5rem;
   background-color: white;
-  margin-left: 0.5rem;
 }
+
+.left, 
+.right {
+  filter: blur(0);
+  transition: filter 1s ease-in-out; 
+}
+
+.left.modal-mode, 
+.right.modal-mode {
+  filter: blur(2px);
+}
+
 
 .left {
   overflow: scroll;
@@ -54,19 +75,18 @@ button {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin-right: 0.5rem;
 
   gap: 1rem;
 }
 
 @media (max-width: 13in) {
-  .page {
-    margin-right: 0.5rem;
+
+  .all-content {
+    flex-direction: column;
   }
 
   .right {
     flex-direction: row;
-    margin-left: 0.5rem;
     width: calc(100vw - 3rem);
   }
 

@@ -2,15 +2,7 @@ html {
   background-color: lightgray;
 }
 
-#root {
-  display: flex;
-  gap: 0.3rem;
-  width: 100vw;
-  height: 100vh;
-}
-
-@media (max-width: 13in) {
-  #root {
-    flex-direction: column;
-  }
+body {
+  margin: 0;
+  padding: 0;
 }

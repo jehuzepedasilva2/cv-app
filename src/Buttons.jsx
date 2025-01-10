@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { CloseIcon } from './assets/icons';
 import { useState } from 'react';
 import './styles/Buttons.css';
 import html2canvas from 'html2canvas';
@@ -338,7 +339,15 @@ export function DownloadPDFButton() {
 
 export function HelpButton() {
   const handleClick = () => {
-    console.log('clicked');
+    const helpModal = document.querySelector('.help-modal');
+    const helpModalContent = document.querySelector('.help-modal-content');
+    const left = document.querySelector('.left');
+    const right = document.querySelector('.right');
+    left.classList.add('modal-mode');
+    right.classList.add('modal-mode');
+    helpModal.classList.add('vis');
+    helpModalContent.classList.add('vis');
+    helpModal.style.backgroundColor = 'rgba(0, 0, 0, 0.402)';
   };
 
   return (
@@ -347,6 +356,35 @@ export function HelpButton() {
       onClick={handleClick}
     >
       Help
+    </button>
+  );
+}
+
+export function CloseModalButton() {
+
+  const handleClick = () => {
+    const helpModal = document.querySelector('.help-modal');
+    const helpModalContent = document.querySelector('.help-modal-content');
+    const left = document.querySelector('.left');
+    const right = document.querySelector('.right');
+    
+    helpModalContent.classList.remove('vis');
+    helpModal.style.backgroundColor = 'transparent';
+
+    setTimeout(() => {
+      helpModal.classList.remove('vis');
+    }, 500);
+
+    left.classList.remove('modal-mode');
+    right.classList.remove('modal-mode');
+  };
+  
+
+  return (
+    <button
+      onClick={handleClick}
+    >
+        {CloseIcon}
     </button>
   );
 }

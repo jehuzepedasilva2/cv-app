@@ -16,7 +16,7 @@ import {
 
 export default function Page() {
   return (
-    <>
+    <div className="all-content">
       <div className='left'>
         <div id="pdf-document" className="page">
           <TopPage 
@@ -52,6 +52,6 @@ export default function Page() {
           <DownloadPDFButton />
         </div>
       </div>
-    </>
+    </div>
   );
 }
