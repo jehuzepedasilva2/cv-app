@@ -9,7 +9,7 @@
 
 .help-modal {
   font-family: 'quicksandbold';
-  font-size: 1.1rem;
+  font-size: 90%;
 
   position: fixed;
   top: 0;
@@ -76,6 +76,6 @@
 }
 
 .icon svg {
-  width: 48px;
-  height: 48px;
+  width: 5%;
+  height: 5%;
 }
