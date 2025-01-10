@@ -37,6 +37,8 @@ ListItemDeleteButton.propTypes = {
   id: PropTypes.string,
 }
 
+// TODO: correctly disable the corresponding edit buttons when deleting list items
+
 function mainSectionAdds(thisId, isEducation, isProject) {
   let obj;
   if (isEducation) {
@@ -126,7 +128,7 @@ export function AddButton({
 
   return (
     <button 
-      className={`add-button ${classes}`}
+      className={`add-button ${classes} ${id === null ? '' : `${id}`} `}
       onClick={(e) => handleClick(e)}
     >
       {text}
@@ -171,14 +173,6 @@ function addWiggles(parentSection, targetElement, text, setText, toggleTexts) {
   });
 }
 
-function enableDisableAddButton(parentSection, isListItem=false) {
-  const sectionsAddButton = document.querySelector(`.section.${parentSection} ${!isListItem ? '.add-button' : '.sub-top-add'}`);
-  if (sectionsAddButton) {
-    sectionsAddButton.classList.toggle('no-hover');
-    sectionsAddButton.disabled = !sectionsAddButton.disabled;
-  }
-}
-
 function enableDisableEdits(parentSection, targetElement) {
   const sectionsEditables = document.querySelectorAll(`.section.${parentSection} .${targetElement} .editable`);
   sectionsEditables.forEach(edits => {
@@ -193,6 +187,14 @@ function enableDisableMainAddSubButtons(classes) {
   subButton.classList.toggle('no-hover');
   addButton.disabled = !addButton.disabled;
   subButton.disabled = !subButton.disabled;
+}
+
+function enableDisableAddButton(parentSection, isListItem=false, id='') {
+  const sectionsAddButton = document.querySelector(`.section.${parentSection} .add-button${!isListItem ? '' : `.sub-top-add.${id}`}`);
+  if (sectionsAddButton) {
+    sectionsAddButton.classList.toggle('no-hover');
+    sectionsAddButton.disabled = !sectionsAddButton.disabled;
+  }
 }
 
 export function SubtractButton({
@@ -211,7 +213,8 @@ export function SubtractButton({
     const [mainSection, section] = parentSection.split(' ');
     addWiggles(mainSection, section, buttonText, setButtonText, toggleTexts);
     indDelVisibility(mainSection, section, true);
-    enableDisableAddButton(mainSection, true);
+    // button.add-button.sub-top-add.exp-0 "
+    enableDisableAddButton(mainSection, true, section); 
     enableDisableEdits(mainSection, `outer.${section}`);
     enableDisableMainAddSubButtons(mainSection);
   }
