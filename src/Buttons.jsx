@@ -343,48 +343,37 @@ export function HelpButton() {
     const helpModalContent = document.querySelector('.help-modal-content');
     const left = document.querySelector('.left');
     const right = document.querySelector('.right');
+
+    setTimeout(() => helpModalContent.classList.add('vis'), 0);
+    helpModal.classList.add('vis')
     left.classList.add('modal-mode');
     right.classList.add('modal-mode');
-    helpModal.classList.add('vis');
-    helpModalContent.classList.add('vis');
-    helpModal.style.backgroundColor = 'rgba(0, 0, 0, 0.402)';
   };
 
   return (
-    <button
-      className='help-button'
-      onClick={handleClick}
-    >
+    <button className="help-button" onClick={handleClick}>
       Help
     </button>
   );
 }
 
 export function CloseModalButton() {
-
   const handleClick = () => {
     const helpModal = document.querySelector('.help-modal');
     const helpModalContent = document.querySelector('.help-modal-content');
     const left = document.querySelector('.left');
     const right = document.querySelector('.right');
+
+    setTimeout(() => helpModal.classList.remove('vis'), 400);
+    helpModalContent.classList.remove('vis')
     
-    helpModalContent.classList.remove('vis');
-    helpModal.style.backgroundColor = 'transparent';
-
-    setTimeout(() => {
-      helpModal.classList.remove('vis');
-    }, 500);
-
     left.classList.remove('modal-mode');
     right.classList.remove('modal-mode');
   };
-  
 
   return (
-    <button
-      onClick={handleClick}
-    >
-        {CloseIcon}
+    <button onClick={handleClick}>
+      {CloseIcon}
     </button>
   );
 }
