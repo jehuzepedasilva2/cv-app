@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
   background-color: var(--resume-bg-clr);
 }
 
@@ -46,16 +46,19 @@ button {
 
 .right {
   /* maybe 8.5 */
-  width: calc(100vw - 8.5in); 
+  width: calc(100vw - 9in); 
   background-color: var(--layout-side-bg-clr);
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 
   color: var(--layout-side-text-clr);
 
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 @media (max-width: 13in) {
@@ -66,7 +69,12 @@ button {
 
   .right {
     flex-direction: row;
-    width: calc(100vw - 3rem);
+    width: 100%;
+    /* width: calc(100vw - 3rem); */
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
 }

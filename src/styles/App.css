@@ -24,11 +24,11 @@
 
 :root {
   /* web pages background color (only seen through a little)*/
-  --html-bg-clr: #f3f4f6;
+  --html-bg-clr: #d5d6d8;
 
   /* layout options/right side */
   --layout-side-text-clr: #334155;
-  --layout-options-container-bx-shadow-clr: #e2e8f0;
+  --layout-options-container-bx-shadow-clr: #a2a5aa;
   --curr-picked-layout-border-clr: #93c5fd;
   --unchosen-layout-border-clr: #cbd5e1;
   --layout-bg-clr: #e0f2fe;
@@ -48,7 +48,7 @@
   --sections-buttons-box-shadow-one: rgba(0, 0, 0, 0.2);
   --sections-buttons-box-shadow-two: rgba(0, 0, 0, 0.1);
   --sections-buttons-on-hover-clr: #bae6fd;
-  --sections-buttons-svg-clr: #facc15;
+  --sections-buttons-svg-clr: #ff8c00;
   /* right side/layout side buttons */
   --layout-side-button-text-decoration-clr: #93c5fd;
   --layout-side-button-text-clr: white;
@@ -77,7 +77,7 @@
   --svg-clr: black;
 }
 
-.dark-blue-theme {
+.dark {
   /* web pages background color (only seen through a little)*/
   --html-bg-clr: #1e293b;
 
@@ -130,59 +130,4 @@
 
   /* svgs for links */
   --svg-clr: white;
-}
-
-.original-theme {
-  /* web pages background color (only seen through a little)*/
-  --html-bg-clr: lightgray;
-
-  /* layout options/right side */
-  --layout-side-text-clr: black;
-  --layout-options-container-bx-shadow-clr: lightgray;
-  --curr-picked-layout-border-clr: #4ade8094;
-  --unchosen-layout-border-clr: gray;
-  --layout-bg-clr: lightgray;
-
-  /* resume/right side */
-  --resume-bg-clr: white;
-  --resume-font: Helvetica, 'Verdana', Calibri;
-  --resume-text-color: black;
-  --on-wiggle-bg-clr: #e5e7eb;
-  --layout-side-and-button-font: 'quicksandbold';
-  --layout-side-bg-clr: white;
-
-  /* buttons */
-  --sections-buttons-bg-clr: #e5e7eb;
-  --sections-buttons-text-clr: black;
-  --sections-buttons-text-decoration-clr: #D1D5DB;
-  --sections-buttons-box-shadow-one: rgba(0, 0, 0, 0.5);
-  --sections-buttons-box-shadow-two: rgba(0, 0, 0, 0.06);
-  --sections-buttons-on-hover-clr: #cfd1d5;
-  --sections-buttons-svg-clr: black;
-  /* right side/layout side buttons */
-  --layout-side-button-text-decoration-clr: #D1D5DB;
-  --layout-side-button-text-clr: white;
-  --download-button-bg-clr: lightcoral;
-  --download-button-border-clr: red;
-  --download-button-box-shadow-one:  rgba(0, 0, 0, 0.5);
-  --download-button-box-shadow-two: rgba(255, 0, 0, 0.541);
-  --download-button-on-hover-clr: rgb(223, 64, 64);
-  --help-button-bg-clr: rgb(104, 169, 235);
-  --help-button-border-clr: blue;
-  --help-button-box-shadow-one:  rgba(0, 0, 0, 0.5);
-  --help-button-box-shadow-two: rgba(0, 0, 255, 0.542);
-  --help-button-on-hover-clr: rgb(0, 123, 255);
-
-  /* editable divs */
-  --editable-clr: #e5e7eb;
-  --editable-on-focus-clr: rgba(173, 216, 230, 0.645);
-
-  /* help modal */
-  --help-modal-content-bg-clr: white;
-  --help-modal-overlay-bg-clr: rgba(0, 0, 0, 0.4);
-  --help-modal-font: 'quicksandbold';
-  --help-modal-text-clr: black;
-
-    /* svgs for links */
-    --svg-clr: black;
 }

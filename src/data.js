@@ -164,6 +164,13 @@ const projDefault = {
   ]
 }
 
+const layouts = {
+  '1': "'Georgia', serif", 
+  '2': "'Tahoma', sans-serif",
+  '3': "'Arial', sans-serif",
+  '4': "'Helvetica', sans-serif"
+}
+
 
 export {
   contactInfo, 
@@ -174,4 +181,5 @@ export {
   eduDefault, 
   projDefault, 
   expDefault,
+  layouts
 };

@@ -1,6 +1,5 @@
 import './styles/HelpModal.css';
 import { CloseModalButton } from './Buttons.jsx';
-// import { ResumeIcon } from './assets/icons.jsx';
 
 export default function HelpModal() {
   return (
@@ -9,7 +8,8 @@ export default function HelpModal() {
         <CloseModalButton />
         <div className="content">
           Welcome to the Resume Builder App! To begin, simply click on one of the
-          available resume layouts to select a format that fits your style. You
+          available resume fonts to select a format that fits your style. You
+          {/* available resume layouts to select a format that fits your style. You */}
           can then edit your resume directly by clicking on any field within the
           editor—whether it’s your name, work experience, education, or skills.
           This intuitive interface allows you to customize your resume quickly

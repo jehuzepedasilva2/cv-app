@@ -42,7 +42,7 @@
   flex-wrap: wrap;
   gap: 1.3rem;
   padding: 1.4rem;
-  border-radius: 1rem;
+  border-radius: 0.2rem;
   height: 100%;
   box-shadow: inset 2px 2px 5px 5px var(--layout-options-container-bx-shadow-clr);
   overflow: scroll;
@@ -61,6 +61,14 @@
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
   border: 4px solid var(--unchosen-layout-border-clr);
+
+  position: relative;
+}
+
+.font-name {
+  position: absolute;
+  bottom: 50%;
+  font-size: 3rem;
 }
 
 img.curr-layout {
@@ -81,6 +89,10 @@ img.curr-layout {
 
 
 @media (max-width: 13in) {
+
+  .font-name {
+    font-size: 2rem;
+  }
 
   .heading-layout > h4 {
     display: none;
@@ -104,4 +116,10 @@ img.curr-layout {
     width: 150px;
   }
 
+}
+
+@media (max-height: 5in) {
+  .font-name {
+    font-size: 0.5rem;
+  }
 }
