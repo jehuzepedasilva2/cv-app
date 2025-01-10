@@ -1,20 +1,20 @@
 .add-button, 
 .sub-button {
   position: absolute;
-  background-color: #e5e7eb;
+  background-color: var(--sections-buttons-bg-clr);
   border: 0;
   border-radius: 0.5rem;
   box-sizing: border-box;
-  color: black;
+  color: var(--sections-buttons-text-clr);
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.15rem;
   padding-left: .3rem;
   padding-right: .3rem;
   text-align: center;
-  text-decoration: none #D1D5DB solid;
+  text-decoration: none var(--sections-buttons-text-decoration-clr) solid;
   text-decoration-thickness: auto;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 var(--sections-buttons-box-shadow-one), 0 1px 2px 0 var(--sections-buttons-box-shadow-two);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -35,7 +35,7 @@
 .add-button:hover, 
 .sub-button:hover, 
 .ind-del:hover {
-  background-color: #cfd1d5;
+  background-color: var(--sections-buttons-on-hover-clr);
 }
 
 .add-button:focus, 
@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e5e7eb;
+  background-color: var(--sections-buttons-bg-clr);
   touch-action: manipulation;
   transition: scale 0.5s ease-in-out;
   position: absolute;
@@ -74,10 +74,10 @@
   box-sizing: border-box;
   user-select: none;
   -webkit-user-select: none;
-  color: black;
-  text-decoration: none #D1D5DB solid;
+  color: var(--sections-buttons-text-clr);
+  text-decoration: none var(--sections-buttons-text-decoration-clr) solid;
   text-decoration-thickness: auto;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 var(--sections-buttons-box-shadow-one), 0 1px 2px 0 var(--sections-buttons-box-shadow-two);
 }
 
 .ind-del {
@@ -98,7 +98,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e5e7eb;
+  background-color: var(var(--sections-buttons-bg-clr));
   touch-action: manipulation;
   transition: scale 0.5s ease-in-out;
   position: absolute;
@@ -107,10 +107,10 @@
   box-sizing: border-box;
   user-select: none;
   -webkit-user-select: none;
-  color: black;
-  text-decoration: none #D1D5DB solid;
+  color: var(--sections-buttons-text-clr);
+  text-decoration: none var(--sections-buttons-text-decoration-clr) solid;
   text-decoration-thickness: auto;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 var(--sections-buttons-box-shadow-one), 0 1px 2px 0 var(--sections-buttons-box-shadow-two);
 }
 
 .ind-del-list.vis {
@@ -146,16 +146,16 @@ button.sub-section.wiggle {
 
 .download-button {
   box-sizing: border-box;
-  border: 2px solid red;
-  background-color: lightcoral;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(255, 0, 0, 0.541);
+  border: 2px solid var(--download-button-border-clr);
+  background-color: var(--download-button-bg-clr);
+  box-shadow: 0 1px 3px 0 var(--download-button-box-shadow-one), 0 1px 2px 0 var(--download-button-box-shadow-two);
 }
 
 .help-button {
   box-sizing: border-box;
-  border: 2px solid blue;
-  background-color: rgb(104, 169, 235);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 255, 0.542);
+  border: 2px solid var(--help-button-border-clr);
+  background-color: var(--help-button-bg-clr);
+  box-shadow: 0 1px 3px 0 var(--help-button-box-shadow-one), 0 1px 2px 0 var(--help-button-box-shadow-two);
 }
 
 .download-button, 
@@ -167,13 +167,13 @@ button.sub-section.wiggle {
 
   border-radius: 0.5rem;
   box-sizing: border-box;
-  color: white;
+  color: var(--layout-side-button-text-clr);
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.15rem;
   padding-left: .3rem;
   padding-right: .3rem;
-  text-decoration: none #D1D5DB solid;
+  text-decoration: none var(--layout-side-button-text-clr) solid;
   text-decoration-thickness: auto;
   cursor: pointer;
   user-select: none;
@@ -183,11 +183,11 @@ button.sub-section.wiggle {
 }
 
 .help-button:hover {
-  background-color: rgb(0, 123, 255);
+  background-color: var(--help-button-on-hover-clr);
 }
 
 .download-button:hover {
-  background-color: rgb(223, 64, 64);
+  background-color: var(--download-button-on-hover-clr);
 }
 
 .download-button:focus, 

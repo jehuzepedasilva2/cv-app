@@ -1,30 +1,3 @@
-@font-face {
-  font-family: 'quicksandbold';
-  src: url('../assets/quicksand/quicksand-bold-webfont.woff2') format('woff2'),
-       url('../assets/quicksand/quicksand-bold-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'quicksandregular';
-  src: url('../assets/quicksand/quicksand-regular-webfont.woff2') format('woff2'),
-       url('../assets/quicksand/quicksand-regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'quicksanddash';
-  src: url('../assets/quicksand/quicksand_dash-webfont.woff2') format('woff2'),
-       url('../assets/quicksand/quicksand_dash-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
 .all-content {
   box-sizing: border-box;
 
@@ -45,7 +18,7 @@
   flex-direction: column;
   gap: 1rem;
   border-radius: 0.5rem;
-  background-color: white;
+  background-color: var(--resume-bg-clr);
 }
 
 .left, 
@@ -62,18 +35,18 @@
 
 .left {
   overflow: scroll;
-  font-family: Helvetica, 'Verdana', Calibri;
+  font-family: var(--resume-font);
 }
 
 .right, 
 button {
-  font-family: 'quicksandbold'
+  font-family: var(--layout-side-and-button-font);
 }
 
 .right {
   /* maybe 8.5 */
   width: calc(100vw - 8.5in); 
-  background-color: white;
+  background-color: var(--layout-side-bg-clr);
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
