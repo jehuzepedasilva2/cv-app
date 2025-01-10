@@ -79,3 +79,34 @@
   width: 5%;
   height: 5%;
 }
+
+@media (max-width: 1000px) {
+  .help-modal-content {
+    height: 60%;
+    width: 60%;
+    overflow: scroll;
+  }
+
+  .content {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .help-modal-content {
+    height: 80%;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+}
+
+@media (max-height: 350px) {
+  .help-modal-content{
+    height: 100%;
+    width: 100%;
+  }
+}

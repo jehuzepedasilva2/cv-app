@@ -34,6 +34,8 @@
   height: 100vh;
   position: relative;
   padding: 0.5rem;
+
+  min-height: 350px;
 }
 
 .page {
@@ -69,14 +71,15 @@ button {
 }
 
 .right {
-  width: calc(100vw - 8.5in);
+  /* maybe 8.5 */
+  width: calc(100vw - 8.5in); 
   background-color: white;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   padding: 1rem;
 
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 @media (max-width: 13in) {

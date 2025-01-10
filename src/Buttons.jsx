@@ -37,8 +37,6 @@ ListItemDeleteButton.propTypes = {
   id: PropTypes.string,
 }
 
-// TODO: correctly disable the corresponding edit buttons when deleting list items
-
 function mainSectionAdds(thisId, isEducation, isProject) {
   let obj;
   if (isEducation) {
