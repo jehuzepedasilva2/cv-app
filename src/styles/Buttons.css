@@ -57,48 +57,18 @@
   transform: scale(1.02);
 }
 
-.ind-del {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 1rem;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--sections-buttons-bg-clr);
-  touch-action: manipulation;
-  transition: scale 0.5s ease-in-out;
-  position: absolute;
-  top: -0.5rem;
-  left: -0.5rem;
-  box-sizing: border-box;
-  user-select: none;
-  -webkit-user-select: none;
-  color: var(--sections-buttons-text-clr);
-  text-decoration: none var(--sections-buttons-text-decoration-clr) solid;
-  text-decoration-thickness: auto;
-  box-shadow: 0 1px 3px 0 var(--sections-buttons-box-shadow-one), 0 1px 2px 0 var(--sections-buttons-box-shadow-two);
-}
-
-.ind-del {
-  visibility: hidden;
-}
-
-.ind-del.vis {
-  visibility: visible;
-}
-
+.ind-del, 
 .ind-del-list {
-  visibility: hidden;
-
-  width: 1rem;
-  height: 1rem;
-  border-radius: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 2rem;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(var(--sections-buttons-bg-clr));
+
+  font-weight: bolder;
+
   touch-action: manipulation;
   transition: scale 0.5s ease-in-out;
   position: absolute;
@@ -107,19 +77,23 @@
   box-sizing: border-box;
   user-select: none;
   -webkit-user-select: none;
-  color: var(--sections-buttons-text-clr);
   text-decoration: none var(--sections-buttons-text-decoration-clr) solid;
   text-decoration-thickness: auto;
   box-shadow: 0 1px 3px 0 var(--sections-buttons-box-shadow-one), 0 1px 2px 0 var(--sections-buttons-box-shadow-two);
-}
-
-.ind-del-list.vis {
-  visibility: visible;
 }
 
 .ind-del, 
 .ind-del-list {
+  visibility: hidden;
+
+  color: var(--sections-ind-del-button-text-clr);
+  background-color: var(--sections-ind-del-button-bg-clr);
   cursor: pointer;
+}
+
+.ind-del.vis, 
+.ind-del-list.vis {
+  visibility: visible;
 }
 
 button > svg {

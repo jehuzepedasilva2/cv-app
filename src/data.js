@@ -164,11 +164,14 @@ const projDefault = {
   ]
 }
 
-const layouts = {
+const fonts = {
   '1': "'Georgia', serif", 
   '2': "'Tahoma', sans-serif",
   '3': "'Arial', sans-serif",
-  '4': "'Helvetica', sans-serif"
+  '4': "'Helvetica', sans-serif",
+  '5': 'Calibri, sans-serif',
+  '6': 'Cambria, serif', 
+  '7': '"Times New Roman", Times, serif'
 }
 
 
@@ -181,5 +184,5 @@ export {
   eduDefault, 
   projDefault, 
   expDefault,
-  layouts
+  fonts
 };

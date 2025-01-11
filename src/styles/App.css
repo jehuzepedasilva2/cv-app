@@ -48,7 +48,9 @@
   --sections-buttons-box-shadow-one: rgba(0, 0, 0, 0.2);
   --sections-buttons-box-shadow-two: rgba(0, 0, 0, 0.1);
   --sections-buttons-on-hover-clr: #bae6fd;
-  --sections-buttons-svg-clr: #ff8c00;
+  --sections-buttons-svg-clr: #ff0000;
+  --sections-ind-del-button-bg-clr: #1e3a8a;
+  --sections-ind-del-button-text-clr: white;
   /* right side/layout side buttons */
   --layout-side-button-text-decoration-clr: #93c5fd;
   --layout-side-button-text-clr: white;

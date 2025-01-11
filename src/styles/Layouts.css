@@ -3,6 +3,8 @@
   justify-content: center;
   align-items: center;
 
+  text-align: center;
+
   font-size: large;
   font-weight: bold;
 
@@ -30,6 +32,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: -1.3rem;
 }
 
 .heading-layout > h4 {
@@ -88,38 +92,31 @@ img.curr-layout {
 }
 
 
-@media (max-width: 13in) {
-
-  .font-name {
-    font-size: 2rem;
-  }
-
-  .heading-layout > h4 {
-    display: none;
-  }
-
-  .vertical-heading-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .layout-choices {
-    width: 100%;
-    height: 200px;
-    flex-direction: column;
-
-  }
-
-  .layout {
-    width: 150px;
-  }
-
+.fonts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
 }
 
-@media (max-height: 5in) {
-  .font-name {
-    font-size: 0.5rem;
-  }
+.drop-down-box {
+  width: 100%;
+}
+
+#font-select {
+  width: 100%;
+  border-radius: 1rem;
+  padding: 0.3rem;
+  font-size: larger;
+  background-color: #f1f5f9;
+}
+
+#font-select:focus {
+  outline: 2px solid var(--editable-on-focus-clr);
+}
+
+.fonts > h4 {
+  padding: 0;
+  margin: 0;
 }

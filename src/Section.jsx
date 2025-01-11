@@ -116,7 +116,6 @@ function ListItem({
   parentId, 
   id 
 }) {
-  console.log(parentId.substring(0, 3));
   const handleBlurCallback = (e) => {
         setInfo(information.map(item => {
           if (item.id === parentId) {
