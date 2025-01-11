@@ -308,19 +308,19 @@ export function DownloadPDFButton() {
   
     const input = document.getElementById('pdf-document');
     html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
-      const pdfWidth = 595.28; // A4 page width in points
+      const pdfWidth = 595.28;
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
   
-      const scale = pdfWidth / canvasWidth; // Scale to fit the width of an A4 page
-      const pdfHeight = canvasHeight * scale; // Scale the height proportionally
+      const scale = pdfWidth / canvasWidth;
+      const pdfHeight = canvasHeight * scale;
   
-      const pdf = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]); // Custom size for the entire content
+      const pdf = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]);
   
       const imgData = canvas.toDataURL('image/png');
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
   
-      pdf.save('new-resume.pdf'); // Name of the downloaded PDF file
+      pdf.save('new-resume.pdf');
     }).finally(() => {
       buttons.forEach(button => button.style.visibility = 'visible');
     }).catch((error) => {

@@ -12,6 +12,9 @@
 }
 
 .page {
+  min-width: 200px;
+  min-height: 560px;
+
   min-height: 11in;
   padding: 3rem;
   display: flex;
@@ -33,6 +36,8 @@
 
 
 .left {  
+  min-height: 560px;
+
   overflow: scroll;
   font-family: var(--resume-font);
   color: var(--resume-text-color);
@@ -45,6 +50,9 @@ button {
 
 /*  the actual right side container */
 .right {
+
+  min-height: 500px;
+
   background-color: var(--layout-side-bg-clr);
   padding: 2rem 2rem 2rem 0rem;
   border-radius: 0.5rem;
