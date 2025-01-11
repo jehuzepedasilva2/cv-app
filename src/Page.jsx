@@ -1,6 +1,7 @@
 import Section from "./Section.jsx";
 import TopPage from "./TopPage.jsx";
 import LayoutsSide from "./Layouts.jsx";
+import { AdjustableIcon } from "./assets/icons.jsx";
 import './styles/Page.css';
 import { 
   DownloadPDFButton, 
@@ -77,8 +78,7 @@ function RightSide({ containerRef, setOtherWidth, otherWidth, setSlideableWidth 
         }}
       onMouseDown={handleMouseDown}
     >
-      <div className="side-dragger">||</div>
-      <div className="side-dragger-side">=</div>
+      <div className="side-dragger">{AdjustableIcon}</div>
       <div className="right-content">
         <div className="fonts">
           <h4>Fonts</h4>

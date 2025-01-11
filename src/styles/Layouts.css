@@ -66,7 +66,7 @@
   transition: transform 0.3s ease-in-out;
   border: 4px solid var(--unchosen-layout-border-clr);
 
-  position: relative;
+  padding: 2rem
 }
 
 .font-name {
@@ -75,22 +75,13 @@
   font-size: 3rem;
 }
 
-img.curr-layout {
+.layout.curr-layout {
   border: 4px solid var(--curr-picked-layout-border-clr)
 }
 
 .layout:active {
   transform: scale(1.1);
 }
-
-.layout > img {
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  border-radius: 1rem;
-}
-
 
 .fonts {
   display: flex;
@@ -119,4 +110,45 @@ img.curr-layout {
 .fonts > h4 {
   padding: 0;
   margin: 0;
+}
+
+.layout-one {
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.layout-one, 
+.layout-one-top, 
+.mini-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mini Top  */
+.layout-one-top div:first-child { 
+  font-size: 1.5rem;
+}
+
+.layout-one-top div:last-child {
+  font-size: 0.8rem;
+}
+
+.mini-content {
+  width: 100%;
+  text-align: center;
+}
+
+.mini-header {
+  align-items: flex-start;
+}
+
+.mini-header-title {
+  font-size: 1rem;
+}
+
+.mini-divider {
+  width: 100%;
+  height: 0;
+  border: 0.01rem solid black;
 }

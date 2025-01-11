@@ -65,7 +65,7 @@ button {
   justify-content: center;
   align-items: center;
   cursor: ew-resize;
-  padding-right: 2rem;
+  margin-right: 2rem;
   user-select: none;
 }
 
@@ -75,11 +75,6 @@ button {
   flex-direction: column;
   height: 100%;
   gap: 2rem;
-}
-
-.side-dragger-side {
-  display: none;
-  user-select: none;
 }
 
 
