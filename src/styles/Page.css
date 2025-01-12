@@ -11,6 +11,12 @@
   min-height: 350px;
 }
 
+.phone-mode {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
 .page {
   min-width: 200px;
   min-height: 560px;
@@ -77,4 +83,17 @@ button {
   gap: 2rem;
 }
 
+
+@media (max-width: 550px) {
+
+  .all-content {
+    display: none;
+  }
+
+  .phone-mode {
+    display: flex;
+    text-align: center;
+  }
+  
+}
 

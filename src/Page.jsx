@@ -147,6 +147,14 @@ function LeftSide({ slideableWidth }) {
   );
 }
 
+function PhoneMode() {
+  return (
+    <div className="phone-mode">
+      <h3>To ensure the best user experience, open this in a full-sized window.</h3>
+    </div>
+  );
+}
+
 
 export default function Page() {
   const widthOfPrinterPaperPx = 880; // the real size is 8.5in ~ 816 px, going to 880px for aesthetics here
@@ -155,19 +163,22 @@ export default function Page() {
   const containerRef = useRef(null);
 
   return (
-    <div 
-      className="all-content"
-      ref={containerRef}
-    >
-      <LeftSide 
-        slideableWidth={slideableWidth}
-      />
-      <RightSide 
-        containerRef={containerRef}
-        setOtherWidth={setOtherWidth}
-        otherWidth={otherWidth}
-        setSlideableWidth={setSlideableWidth}
-      />
-    </div>
+    <>
+      <PhoneMode />
+      <div
+        className="all-content"
+        ref={containerRef}
+      >
+        <LeftSide
+          slideableWidth={slideableWidth}
+        />
+        <RightSide
+          containerRef={containerRef}
+          setOtherWidth={setOtherWidth}
+          otherWidth={otherWidth}
+          setSlideableWidth={setSlideableWidth}
+        />
+      </div>
+    </>
   );
 }
