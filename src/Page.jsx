@@ -17,7 +17,7 @@ import {
 } from './data.js';
 import {
   useState, 
-  useRef
+  useRef, 
 } from 'react';
 import PropTypes from "prop-types";
 
@@ -30,6 +30,14 @@ RightSide.propTypes = {
 
 LeftSide.propTypes = {
   slideableWidth: PropTypes.number,
+}
+
+function PhoneMode() {
+  return (
+    <div className="phone-mode">
+      <h3>To ensure the best user experience, open this in a full-sized window.</h3>
+    </div>
+  );
 }
 
 function RightSide({ containerRef, setOtherWidth, otherWidth, setSlideableWidth }) {
@@ -67,8 +75,6 @@ function RightSide({ containerRef, setOtherWidth, otherWidth, setSlideableWidth 
     document.documentElement.style.setProperty('--resume-font', fonts[selected]);
     setSelectedFont(fonts[selected]);
   }
-
-  console.log(selectedFont);
 
   return (
     <div 
@@ -147,31 +153,35 @@ function LeftSide({ slideableWidth }) {
   );
 }
 
-function PhoneMode() {
-  return (
-    <div className="phone-mode">
-      <h3>To ensure the best user experience, open this in a full-sized window.</h3>
-    </div>
-  );
-}
-
+import { useEffect } from 'react';
 
 export default function Page() {
-  const widthOfPrinterPaperPx = 880; // the real size is 8.5in ~ 816 px, going to 880px for aesthetics here
-  const [otherWidth, setOtherWidth] = useState(window.innerWidth-widthOfPrinterPaperPx);
-  const [slideableWidth, setSlideableWidth] = useState(widthOfPrinterPaperPx); 
+  const widthOfPrinterPaperPx = 900; // Real size is ~816px; 900px for aesthetics
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [otherWidth, setOtherWidth] = useState(windowWidth - widthOfPrinterPaperPx);
+  const [slideableWidth, setSlideableWidth] = useState(widthOfPrinterPaperPx);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWindowWidth = window.innerWidth;
+      setWindowWidth(newWindowWidth);
+      setOtherWidth(Math.max(0, newWindowWidth - widthOfPrinterPaperPx));
+      setSlideableWidth(widthOfPrinterPaperPx);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
       <PhoneMode />
-      <div
-        className="all-content"
-        ref={containerRef}
-      >
-        <LeftSide
-          slideableWidth={slideableWidth}
-        />
+      <div className="all-content" ref={containerRef}>
+        <LeftSide slideableWidth={slideableWidth} />
         <RightSide
           containerRef={containerRef}
           setOtherWidth={setOtherWidth}
@@ -182,3 +192,40 @@ export default function Page() {
     </>
   );
 }
+
+
+// export default function Page() {
+//   const widthOfPrinterPaperPx = 900; // Real size is ~816px; 880px for aesthetics
+//   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+//   const [otherWidth, setOtherWidth] = useState(windowWidth - widthOfPrinterPaperPx);
+//   const [slideableWidth, setSlideableWidth] = useState(widthOfPrinterPaperPx);
+//   const containerRef = useRef(null);
+
+//   window.addEventListener('resize', () => {
+//     const newOtherWidth = window.innerWidth - widthOfPrinterPaperPx;
+//     const newSlideableWidth = widthOfPrinterPaperPx;
+//     setOtherWidth(newOtherWidth);
+//     setSlideableWidth(newSlideableWidth);
+//     setWindowWidth(window.innerWidth);
+//   })
+
+//   return (
+//     <>
+//       <PhoneMode />
+//       <div
+//         className="all-content"
+//         ref={containerRef}
+//       >
+//         <LeftSide
+//           slideableWidth={slideableWidth}
+//         />
+//         <RightSide
+//           containerRef={containerRef}
+//           setOtherWidth={setOtherWidth}
+//           otherWidth={otherWidth}
+//           setSlideableWidth={setSlideableWidth}
+//         />
+//       </div>
+//     </>
+//   );
+// }

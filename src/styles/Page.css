@@ -20,10 +20,8 @@
 }
 
 .page {
-  min-width: 200px;
   min-height: 560px;
 
-  min-height: 11in;
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -58,17 +56,18 @@ button {
 
 /*  the actual right side container */
 .right {
-
   min-height: 500px;
 
   background-color: var(--layout-side-bg-clr);
   padding: 2rem 2rem 2rem 0rem;
   border-radius: 0.5rem;
   display: flex;
+  overflow: hidden;
 }
 
 .side-dragger {
   width: 10px;
+  min-width: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,7 +77,7 @@ button {
 }
 
 .right-content {
-  flex: 1;
+  /* flex: 40; */
   display: flex;
   flex-direction: column;
   height: 100%;
